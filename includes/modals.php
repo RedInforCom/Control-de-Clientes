@@ -3,7 +3,7 @@
     <!-- overlay NO cierra al click -->
     <div class="absolute inset-0 modal-backdrop"></div>
 
-    <div class="relative w-full max-w-md bg-white shadow-2xl overflow-hidden"
+    <div class="relative w-full max-w-2xl bg-white shadow-2xl overflow-hidden"
          style="border-radius:0.3rem; border:1px solid #1F54DE;">
         <!-- Header del modal -->
         <div class="px-5 py-[0.7rem] text-white flex items-start justify-between"
@@ -30,8 +30,8 @@
         </div>
 
         <!-- Body del modal -->
-        <form id="clientForm" class="p-5 space-y-6">
-            <!-- Alerta de error -->
+        <form id="clientForm" class="p-5 space-y-5" onsubmit="return ClientModal.submit(event);">
+            <!-- Alerta -->
             <div id="clientModalAlert" class="hidden border p-3 text-sm" style="border-radius:0.3rem;">
                 <div class="flex items-start justify-between gap-3">
                     <div id="clientModalAlertText"></div>
@@ -44,57 +44,113 @@
                 </div>
             </div>
 
-            <!-- Campos -->
-            <div>
-                <label class="block text-sm font-semibold text-gray-800">Cliente <span class="text-red-500">*</span></label>
-                <input id="clientName"
-                       class="w-full mt-1 px-3 py-[0.45rem] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
-                       style="border-radius:0.3rem; background:#F9FAFB;"
-                       placeholder="Nombre del cliente" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-800">Cliente <span class="text-red-500">*</span></label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-1a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v1"></path>
+                                <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
+                            </svg>
+                        </span>
+                        <input id="clientName"
+                               autocomplete="off"
+                               class="w-full mt-1 pl-11 pr-3 py-[0.45rem] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                               style="border-radius:0.3rem; background:#F9FAFB;"
+                               placeholder="Nombre del cliente" />
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-800">Contacto <span class="text-red-500">*</span></label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </span>
+                        <input id="clientContact"
+                               autocomplete="off"
+                               class="w-full mt-1 pl-11 pr-3 py-[0.45rem] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                               style="border-radius:0.3rem; background:#F9FAFB;"
+                               placeholder="Contacto del cliente" />
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-800">Teléfono <span class="text-red-500">*</span></label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.31 1.7.57 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.09a2 2 0 0 1 2.11-.45c.8.26 1.64.45 2.5.57A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </span>
+                        <input id="clientPhone"
+                               inputmode="numeric"
+                               autocomplete="off"
+                               class="w-full mt-1 pl-11 pr-3 py-[0.45rem] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                               style="border-radius:0.3rem; background:#F9FAFB;"
+                               placeholder="Solo números" />
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-800">Dominio <span class="text-red-500">*</span></label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M2 12h20"></path>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                            </svg>
+                        </span>
+                        <input id="clientDomain"
+                               autocomplete="off"
+                               class="w-full mt-1 pl-11 pr-3 py-[0.45rem] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                               style="border-radius:0.3rem; background:#F9FAFB;"
+                               placeholder="Ej: vancouver.edu.pe" />
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-800">Correo <span class="text-red-500">*</span></label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2">
+                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
+                                <path d="m22 6-10 7L2 6"></path>
+                            </svg>
+                        </span>
+                        <input id="clientEmail"
+                               type="email"
+                               autocomplete="off"
+                               class="w-full mt-1 pl-11 pr-3 py-[0.45rem] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                               style="border-radius:0.3rem; background:#F9FAFB;"
+                               placeholder="correo@dominio.com" />
+                    </div>
+                </div>
             </div>
 
-            <div>
-                <label class="block text-sm font-semibold text-gray-800">Contacto</label>
-                <input id="clientContact"
-                       class="w-full mt-1 px-3 py-[0.45rem] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
-                       style="border-radius:0.3rem; background:#F9FAFB;"
-                       placeholder="Contacto del cliente" />
-            </div>
-
-            <div>
-                <label class="block text-sm font-semibold text-gray-800">Teléfono</label>
-                <input id="clientPhone"
-                       type="tel"
-                       class="w-full mt-1 px-3 py-[0.45rem] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
-                       style="border-radius:0.3rem; background:#F9FAFB;"
-                       placeholder="Teléfono" />
-            </div>
-
-            <div>
-                <label class="block text-sm font-semibold text-gray-800">Dominio <span class="text-red-500">*</span></label>
-                <input id="clientDomain"
-                       class="w-full mt-1 px-3 py-[0.45rem] border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200"
-                       style="border-radius:0.3rem; background:#F9FAFB;"
-                       placeholder="example.com" />
-            </div>
-
-            <!-- Botones -->
             <div class="grid grid-cols-2 gap-3 pt-1">
                 <button type="button"
-                        class="w-full px-4 py-[0.45rem] border border-gray-300 text-gray-700 hover:bg-gray-50 transition inline-flex items-center justify-center gap-2"
+                        class="w-full px-4 py-[0.45rem] border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition inline-flex items-center justify-center gap-2"
                         style="border-radius:0.3rem;"
                         onclick="ClientModal.close()">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M18 6L6 18"></path>
                         <path d="M6 6l12 12"></path>
                     </svg>
                     Cancelar
                 </button>
 
-                <button id="clientCreateBtn" type="button"
+                <!-- ✅ Ahora es submit para capturar Enter y onsubmit -->
+                <button id="clientCreateBtn" type="submit"
                         class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
-                        style="border-radius:0.3rem; background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);"
-                        onclick="ClientModal.submit()">
+                        style="border-radius:0.3rem; background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M15 12H9"></path>
                         <path d="M12 9v6"></path>
@@ -109,12 +165,10 @@
 
 <!-- Modal: Editar Administrador -->
 <div id="adminModal" class="fixed inset-0 hidden items-center justify-center p-4 z-[50]">
-    <!-- overlay NO cierra al click -->
     <div class="absolute inset-0 modal-backdrop"></div>
 
     <div class="relative w-full max-w-md bg-white shadow-2xl overflow-hidden"
          style="border-radius:0.3rem; border:1px solid #1F54DE;">
-        <!-- Header -->
         <div class="px-5 py-[0.7rem] text-white flex items-start justify-between"
              style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
             <div class="flex items-center gap-3">
@@ -130,7 +184,6 @@
                 </div>
             </div>
 
-            <!-- X -->
             <button type="button" class="p-2 hover:bg-white/10 transition" style="border-radius:0.3rem;" data-admin-x aria-label="Cerrar">
                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M18 6L6 18"></path>
@@ -140,7 +193,6 @@
         </div>
 
         <div class="p-5 space-y-4">
-            <!-- Alert -->
             <div id="adminModalAlert" class="hidden border p-3 text-sm" style="border-radius:0.3rem;">
                 <div class="flex items-start justify-between gap-3">
                     <div id="adminModalAlertText"></div>
@@ -153,24 +205,20 @@
                 </div>
             </div>
 
-            <!-- Credenciales actuales -->
             <div class="border border-gray-200 bg-gray-50 p-4" style="border-radius:0.3rem;">
                 <div class="text-xs uppercase tracking-wider text-gray-500 mb-2">Credenciales actuales</div>
                 <div class="space-y-2 text-sm">
                     <div class="flex items-center gap-2">
                         <span class="font-semibold text-gray-800 w-24">Usuario:</span>
-                        <!-- CAMBIO: muestra el usuario actual (lo llena layout_end.php al abrir) -->
                         <span id="adminCurrentUser" class="text-gray-700">—</span>
                     </div>
                     <div class="flex items-center gap-2">
                         <span class="font-semibold text-gray-800 w-24">Contraseña:</span>
-                        <!-- CAMBIO: se muestra la contraseña actual (siempre enmascarada) -->
                         <span id="adminCurrentPass" class="text-gray-700">******</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Form -->
             <form id="adminEditForm" class="space-y-4" onsubmit="return AdminModal.submit(event)">
                 <div>
                     <label class="block text-sm font-semibold text-gray-800">Nuevo Usuario <span class="text-red-500">*</span></label>
@@ -218,10 +266,10 @@
 
                 <div class="grid grid-cols-2 gap-3 pt-1">
                     <button type="button"
-                            class="w-full px-4 py-[0.45rem] border border-gray-300 text-gray-700 hover:bg-gray-50 transition inline-flex items-center justify-center gap-2"
+                            class="w-full px-4 py-[0.45rem] border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition inline-flex items-center justify-center gap-2"
                             style="border-radius:0.3rem;"
                             onclick="AdminModal.close()">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M18 6L6 18"></path>
                             <path d="M6 6l12 12"></path>
                         </svg>
@@ -241,7 +289,6 @@
                 </div>
             </form>
 
-            <!-- Zona de peligro -->
             <div class="border border-red-200 bg-red-50 p-4" style="border-radius:0.3rem;">
                 <div class="flex items-center gap-2 text-red-700 font-semibold">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -253,7 +300,6 @@
                 </div>
                 <div class="text-xs text-red-600 mt-1">Esta acción no se puede deshacer</div>
 
-                <!-- CAMBIO: llama a confirmResetDb (abre confirmación en AppModal) -->
                 <button type="button"
                         class="mt-3 w-full px-4 py-[0.45rem] text-white font-semibold bg-red-600 hover:bg-red-700 transition inline-flex items-center justify-center gap-2"
                         style="border-radius:0.3rem;"
