@@ -35,7 +35,7 @@ if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
     exit;
 }
 
-// Dominio válido (subdominios + TLDs compuestos)
+// Dominio válido
 if (strpos($dominio, '://') !== false || strpos($dominio, '/') !== false || strpos($dominio, ':') !== false) {
     http_response_code(400);
     echo json_encode(['ok' => false, 'message' => 'Dominio inválido. No uses http/https, rutas ni puertos.']);
@@ -62,17 +62,22 @@ if (!preg_match('/^[a-z]{2,24}$/i', $tld)) {
 }
 
 try {
-    // Unicidad: nombre_cliente o dominio
-    $stmt = $pdo->prepare("SELECT COUNT(*) AS c
+    // Buscar si existe por nombre_cliente o dominio y devolver su ID
+    $stmt = $pdo->prepare("SELECT id, nombre_cliente, dominio
                            FROM clientes
                            WHERE LOWER(nombre_cliente) = LOWER(:nombre_cliente)
-                              OR LOWER(dominio) = LOWER(:dominio)");
+                              OR LOWER(dominio) = LOWER(:dominio)
+                           LIMIT 1");
     $stmt->execute(['nombre_cliente' => $nombre_cliente, 'dominio' => $dominio]);
-    $exists = (int)$stmt->fetch()['c'];
+    $existing = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($exists > 0) {
+    if ($existing) {
         http_response_code(409);
-        echo json_encode(['ok' => false, 'message' => 'El cliente o dominio ya existe.']);
+        echo json_encode([
+            'ok' => false,
+            'message' => 'El cliente o dominio ya existe.',
+            'existing_id' => (int)$existing['id']
+        ]);
         exit;
     }
 
