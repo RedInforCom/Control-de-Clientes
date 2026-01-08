@@ -206,62 +206,39 @@
     window.AdminModal.confirmResetDb = aConfirmResetDb;
 
     // =========================
-    // ClientModal (deja lo que ya tienes)
+    // ClientModal (CREAR CLIENTE)
     // =========================
-    window.ClientModal = window.ClientModal || {};
-    window.ClientModal.open = function () {
-        const el = document.getElementById('clientModal');
-        if (!el) {
-            console.warn('[ClientModal] No existe #clientModal');
-            return;
-        }
-        show(el);
-    };
-    window.ClientModal.close = function () {
-        const el = document.getElementById('clientModal');
-        if (!el) return;
-        hide(el);
-    };
+    const clientModal = document.getElementById('clientModal');
 
-    // =========================
-    // Close buttons
-    // =========================
-    document.addEventListener('click', (e) => {
-        const adminX = e.target.closest('[data-admin-x]');
-        if (adminX) {
-            e.preventDefault();
-            window.AdminModal.close();
-            return;
-        }
+    const cAlert = document.getElementById('clientModalAlert');
+    const cAlertText = document.getElementById('clientModalAlertText');
 
-        const clientX = e.target.closest('[data-client-x]');
-        if (clientX) {
-            e.preventDefault();
-            window.ClientModal.close();
-            return;
-        }
-    });
+    const cName = document.getElementById('clientName');
+    const cContact = document.getElementById('clientContact');
+    const cPhone = document.getElementById('clientPhone');
+    const cDomain = document.getElementById('clientDomain');
+    const cEmail = document.getElementById('clientEmail');
 
-    // =========================
-    // Open handlers (header/sidebar)
-    // =========================
-    document.addEventListener('click', (e) => {
-        const adminTrigger = e.target.closest('[data-open-admin-modal]');
-        if (adminTrigger) {
-            e.preventDefault();
-            window.AdminModal.open();
-            return;
-        }
+    const cCreateBtn = document.getElementById('clientCreateBtn');
 
-        const clientTrigger = e.target.closest('[data-open-client-modal]');
-        if (clientTrigger) {
-            e.preventDefault();
-            window.ClientModal.open();
-            return;
-        }
-    });
-})();
-</script>
+    function cSetAlert(type, msg) {
+        if (!cAlert || !cAlertText) return;
+        cAlertText.textContent = msg;
+        cAlert.classList.remove('hidden');
 
-</body>
-</html>
+        cAlert.classList.remove('border-red-200', 'bg-red-50', 'text-red-700');
+        cAlert.classList.remove('border-green-200', 'bg-green-50', 'text-green-700');
+
+        if (type === 'success') cAlert.classList.add('border-green-200', 'bg-green-50', 'text-green-700');
+        else cAlert.classList.add('border-red-200', 'bg-red-50', 'text-red-700');
+    }
+
+    function cClearAlert() {
+        if (!cAlert || !cAlertText) return;
+        cAlert.classList.add('hidden');
+        cAlertText.textContent = '';
+    }
+
+    function cSetSaving(isSaving) {
+        if (!cCreateBtn) return;
+        if (
