@@ -87,7 +87,6 @@
         aClearAlert();
         aLoadSnapshot();
 
-        // reset form (sin tocar tu diseño)
         if (aNewUser) aNewUser.value = '';
         if (aNewPass) {
             aNewPass.value = '';
@@ -152,7 +151,6 @@
     }
 
     function aConfirmResetDb() {
-        // Requiere tu modal global existente (AppModal). Si no existe, avisa.
         if (!window.AppModal || typeof window.AppModal.open !== 'function') {
             aSetAlert('error', 'No se encontró el modal de confirmación (AppModal). Verifica que exista #globalModal y su JS.');
             return;
@@ -241,4 +239,206 @@
 
     function cSetSaving(isSaving) {
         if (!cCreateBtn) return;
-        if (
+        if (isSaving) {
+            cCreateBtn.disabled = true;
+            cCreateBtn.classList.add('opacity-70');
+        } else {
+            cCreateBtn.disabled = false;
+            cCreateBtn.classList.remove('opacity-70');
+        }
+    }
+
+    function onlyDigits(v) {
+        return (v || '').replace(/\D+/g, '');
+    }
+
+    function normalizeDomain(v) {
+        return (v || '').trim().toLowerCase();
+    }
+
+    function isValidDomain(domain) {
+        if (!domain) return false;
+        if (domain.includes('://')) return false;
+        if (domain.includes('/')) return false;
+        if (domain.includes(':')) return false;
+        if (domain.startsWith('.')) return false;
+        if (domain.endsWith('.')) return false;
+        if (!domain.includes('.')) return false;
+
+        const labels = domain.split('.');
+        for (const l of labels) {
+            if (!l) return false;
+            if (!/^[a-z0-9-]+$/i.test(l)) return false;
+            if (l.startsWith('-') || l.endsWith('-')) return false;
+        }
+
+        const tld = labels[labels.length - 1];
+        if (!/^[a-z]{2,24}$/i.test(tld)) return false;
+
+        return true;
+    }
+
+    function isValidEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(email || '');
+    }
+
+    function cOpen() {
+        if (!clientModal) {
+            console.warn('[ClientModal] No existe #clientModal');
+            return;
+        }
+        cClearAlert();
+
+        if (cName) cName.value = '';
+        if (cContact) cContact.value = '';
+        if (cPhone) cPhone.value = '';
+        if (cDomain) cDomain.value = '';
+        if (cEmail) cEmail.value = '';
+
+        show(clientModal);
+        setTimeout(() => cName && cName.focus(), 0);
+    }
+
+    function cClose() {
+        if (!clientModal) return;
+        hide(clientModal);
+    }
+
+    async function cSubmit(e) {
+        if (e && typeof e.preventDefault === 'function') e.preventDefault();
+        cClearAlert();
+
+        const cliente = (cName?.value || '').trim();
+        const contacto = (cContact?.value || '').trim();
+        const telefonoRaw = (cPhone?.value || '').trim();
+        const telefono = onlyDigits(telefonoRaw);
+        const dominio = normalizeDomain(cDomain?.value || '');
+        const correo = (cEmail?.value || '').trim();
+
+        if (!cliente || !contacto || !telefono || !dominio || !correo) {
+            cSetAlert('error', 'Debes completar todos los campos.');
+            return false;
+        }
+
+        if (!/^\d+$/.test(telefono)) {
+            cSetAlert('error', 'El teléfono solo debe contener números.');
+            return false;
+        }
+        if (cPhone && cPhone.value !== telefono) cPhone.value = telefono;
+
+        if (!isValidDomain(dominio)) {
+            cSetAlert('error', 'Dominio inválido. Ejemplos: vancouver.edu.pe, app.midominio.com, dominio.com.pe');
+            return false;
+        }
+
+        if (!isValidEmail(correo)) {
+            cSetAlert('error', 'Correo inválido. Ej: usuario@dominio.com');
+            return false;
+        }
+
+        cSetSaving(true);
+
+        try {
+            const res = await fetch('/cliente/create.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({
+                    cliente,
+                    contacto,
+                    telefono,
+                    dominio,
+                    correo
+                }).toString()
+            });
+
+            const data = await res.json().catch(() => ({ ok: false, message: 'Respuesta inválida del servidor.' }));
+
+            if (!res.ok || !data.ok) {
+                // ✅ Si ya existe, igual enviamos a la ficha en modo editar
+                if (res.status === 409 && data && data.existing_id) {
+                    cSetAlert('success', 'Ya existe. Abriendo ficha...');
+                    window.location.href = '/cliente/ficha.php?id=' + encodeURIComponent(data.existing_id) + '&edit=1';
+                    return false;
+                }
+            
+                cSetAlert('error', data.message || 'No se pudo crear el cliente.');
+                return false;
+            }
+
+            if (!data.id) {
+                cSetAlert('error', 'No se recibió el ID del cliente.');
+                return false;
+            }
+
+            cSetAlert('success', 'Cliente creado. Abriendo ficha...');
+            window.location.href = '/cliente/ficha.php?id=' + encodeURIComponent(data.id) + '&edit=1';
+            return false;
+        } catch (err) {
+            cSetAlert('error', 'Error de red. Intenta de nuevo.');
+            return false;
+        } finally {
+            cSetSaving(false);
+        }
+    }
+
+    // filtro telefono
+    if (cPhone) {
+        cPhone.addEventListener('input', () => {
+            const cleaned = onlyDigits(cPhone.value);
+            if (cPhone.value !== cleaned) cPhone.value = cleaned;
+        });
+        cPhone.addEventListener('paste', (e) => {
+            e.preventDefault();
+            const text = (e.clipboardData || window.clipboardData).getData('text') || '';
+            cPhone.value = onlyDigits(text);
+        });
+    }
+
+    window.ClientModal = window.ClientModal || {};
+    window.ClientModal.open = cOpen;
+    window.ClientModal.close = cClose;
+    window.ClientModal.submit = cSubmit;
+    window.ClientModal.clearAlert = cClearAlert;
+
+    // =========================
+    // Close buttons
+    // =========================
+    document.addEventListener('click', (e) => {
+        const adminX = e.target.closest('[data-admin-x]');
+        if (adminX) {
+            e.preventDefault();
+            window.AdminModal.close();
+            return;
+        }
+
+        const clientX = e.target.closest('[data-client-x]');
+        if (clientX) {
+            e.preventDefault();
+            window.ClientModal.close();
+            return;
+        }
+    });
+
+    // =========================
+    // Open handlers (header/sidebar/center)
+    // =========================
+    document.addEventListener('click', (e) => {
+        const adminTrigger = e.target.closest('[data-open-admin-modal]');
+        if (adminTrigger) {
+            e.preventDefault();
+            window.AdminModal.open();
+            return;
+        }
+
+        const clientTrigger = e.target.closest('[data-open-client-modal]');
+        if (clientTrigger) {
+            e.preventDefault();
+            window.ClientModal.open();
+            return;
+        }
+    });
+})();
+</script>
+
+</body>
+</html>
