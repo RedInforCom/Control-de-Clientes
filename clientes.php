@@ -38,7 +38,16 @@ try {
                 <p class="text-sm text-gray-600">Buscar, filtrar y administrar clientes</p>
             </div>
 
+            <!-- ✅ Solo este botón: py-2 = 0.4rem -->
+            <style>
+                [data-btn-create-client].py-2{
+                    padding-top: 0.4rem !important;
+                    padding-bottom: 0.4rem !important;
+                }
+            </style>
+
             <button
+                data-btn-create-client
                 class="inline-flex items-center gap-2 px-4 py-2 text-white font-semibold shadow-sm"
                 style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);"
                 type="button"
@@ -133,7 +142,7 @@ try {
                     <?php if (!$clientes): ?>
                         <tr>
                             <td colspan="6" class="px-5 py-6 text-gray-500">
-                                No hay clientes aún. Crea el primero con ���Crear Cliente”.
+                                No hay clientes aún. Crea el primero con “Crear Cliente”.
                             </td>
                         </tr>
                     <?php else: ?>
