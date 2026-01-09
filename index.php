@@ -1,6 +1,6 @@
 <?php
 // Start session management
-session_start();
+require_once __DIR__ . '/config/session.php';
 
 // Initialize error and success messages
 $error_message = '';
