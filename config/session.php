@@ -2,33 +2,28 @@
 declare(strict_types=1);
 
 /**
- * Objetivo:
- * - Mantener la sesión activa mientras el navegador siga abierto.
- * - Que solo se cierre al cerrar el navegador/PC o al hacer logout.
+ * Sesión persistente mientras el navegador esté abierto:
+ * - cookie lifetime = 0 (se borra al cerrar navegador)
+ * - gc_maxlifetime alto para que el servidor no la limpie por inactividad
  *
- * Claves:
- * - Cookie de sesión sin expiración (lifetime=0 => "session cookie").
- * - Aumentar gc_maxlifetime para que el servidor no limpie la sesión por inactividad.
+ * Compatible con PHP antiguos (sin session_set_cookie_params por array).
  */
 
-$cookieParams = session_get_cookie_params();
+@ini_set('session.gc_maxlifetime', '604800'); // 7 días
+@ini_set('session.cookie_lifetime', '0');     // hasta cerrar navegador
 
-session_set_cookie_params([
-    'lifetime' => 0, // hasta cerrar navegador
-    'path' => $cookieParams['path'] ?? '/',
-    'domain' => $cookieParams['domain'] ?? '',
-    'secure' => (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off'),
-    'httponly' => true,
-    'samesite' => 'Lax',
-]);
+$secure = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
+$httponly = true;
 
-// Evitar que el GC borre sesiones "por inactividad" muy rápido (7 días)
-@ini_set('session.gc_maxlifetime', '604800');
-@ini_set('session.cookie_lifetime', '0');
+$params = session_get_cookie_params();
+$path = $params['path'] ?? '/';
+$domain = $params['domain'] ?? '';
+
+// Firma antigua (compatible):
+session_set_cookie_params(0, $path, $domain, $secure, $httponly);
 
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
 
-// Marca actividad (no cierra por tiempo; solo ayuda al GC)
 $_SESSION['_last_seen'] = time();
