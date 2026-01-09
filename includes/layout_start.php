@@ -8,7 +8,7 @@ $usuario_layout = $_SESSION['usuario'] ?? 'Administrador';
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Control de Clientes - Sistema de Gestión Profesional</title>
+    <title>Control de Clientes - Sistema de Gesti贸n Profesional</title>
     <link rel="icon" type="image/webp" href="/assets/favicon.webp">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -34,7 +34,7 @@ $usuario_layout = $_SESSION['usuario'] ?? 'Administrador';
         .accent-dot{ background: var(--accent); }
         .modal-backdrop{ background: rgba(2,11,49,0.65); }
 
-        /* ✅ Focus profesional (sin “borde grueso”) */
+        /* Focus profesional (sin borde grueso) */
         :where(input, select, textarea){
             transition: box-shadow .15s ease, border-color .15s ease, background-color .15s ease;
         }
