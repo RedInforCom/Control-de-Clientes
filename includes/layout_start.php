@@ -1,7 +1,5 @@
 <?php
-if (session_status() !== PHP_SESSION_ACTIVE) {
-    session_start();
-}
+require_once __DIR__ . '/../config/session.php';
 
 $usuario_layout = $_SESSION['usuario'] ?? 'Administrador';
 ?>
@@ -10,7 +8,7 @@ $usuario_layout = $_SESSION['usuario'] ?? 'Administrador';
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Control de Clientes - Sistema de Gesti贸n Profesional</title>
+    <title>Control de Clientes - Sistema de Gestión Profesional</title>
     <link rel="icon" type="image/webp" href="/assets/favicon.webp">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -35,6 +33,17 @@ $usuario_layout = $_SESSION['usuario'] ?? 'Administrador';
         }
         .accent-dot{ background: var(--accent); }
         .modal-backdrop{ background: rgba(2,11,49,0.65); }
+
+        /* ✅ Focus profesional (sin “borde grueso”) */
+        :where(input, select, textarea){
+            transition: box-shadow .15s ease, border-color .15s ease, background-color .15s ease;
+        }
+        :where(input, select, textarea):focus{
+            outline: none !important;
+            border-color: rgba(37,99,235,.55) !important;
+            box-shadow: 0 0 0 3px rgba(37,99,235,.12) !important;
+            background-color: #ffffff !important;
+        }
     </style>
 </head>
 <body class="min-h-screen app-bg">

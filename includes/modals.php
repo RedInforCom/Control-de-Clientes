@@ -30,7 +30,15 @@
         </div>
 
         <!-- Body del modal -->
-        <form id="clientForm" class="p-5 space-y-5" onsubmit="return ClientModal.submit(event);">
+        <form id="clientForm" class="p-5 space-y-5"
+              onsubmit="
+                event.preventDefault();
+                if (window.ClientModal && typeof window.ClientModal.submit === 'function') {
+                    return window.ClientModal.submit(event);
+                }
+                alert('ClientModal.submit no está cargado. Revisa includes/layout_end.php');
+                return false;
+              ">
             <!-- Alerta -->
             <div id="clientModalAlert" class="hidden border p-3 text-sm" style="border-radius:0.3rem;">
                 <div class="flex items-start justify-between gap-3">
@@ -147,7 +155,6 @@
                     Cancelar
                 </button>
 
-                <!-- ✅ Ahora es submit para capturar Enter y onsubmit -->
                 <button id="clientCreateBtn" type="submit"
                         class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
                         style="border-radius:0.3rem; background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">

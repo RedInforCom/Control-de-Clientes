@@ -150,49 +150,33 @@
         return false;
     }
 
+    // ✅ CAMBIO ÚNICO: Resetear BD sin AppModal + redirigir al dashboard
     function aConfirmResetDb() {
-        if (!window.AppModal || typeof window.AppModal.open !== 'function') {
-            aSetAlert('error', 'No se encontró el modal de confirmación (AppModal). Verifica que exista #globalModal y su JS.');
+        aClearAlert();
+
+        const ok = window.confirm('¿Seguro que deseas resetear la Base de Datos? Esta acción NO se puede deshacer.');
+        if (!ok) return;
+
+        const val = window.prompt('Escribe RESET para confirmar:', '');
+        if ((val || '').trim() !== 'RESET') {
+            aSetAlert('error', 'Confirmación inválida. Debes escribir RESET.');
             return;
         }
 
-        aClose();
+        aSetAlert('success', 'Reseteando base de datos...');
 
-        window.AppModal.open({
-            type: 'danger',
-            title: 'Confirmar reseteo',
-            subtitle: 'Esta acción no se puede deshacer',
-            body:
-                '<div class="text-sm text-gray-700 space-y-2">' +
-                    '<p class="font-semibold text-gray-900">¿Seguro que deseas resetear la Base de Datos?</p>' +
-                    '<p>Se eliminarán clientes, servicios, pagos, etc. <span class="font-semibold">El administrador no se borrará</span>.</p>' +
-                    '<p class="text-xs text-gray-500">Escribe <span class="font-semibold">RESET</span> para confirmar:</p>' +
-                    '<input id="resetConfirmInput" class="w-full mt-1 px-3 py-[0.45rem] border border-gray-300" style="border-radius:0.3rem; background:#F9FAFB;" placeholder="RESET" />' +
-                '</div>',
-            primaryText: 'Sí, resetear',
-            primaryIcon: (window.AppModal.ICONS && window.AppModal.ICONS.danger) ? window.AppModal.ICONS.danger : '',
-            returnTo: function(){ aOpen(); },
-            onPrimary: function(closeGlobal, setGlobalAlert){
-                const val = (document.getElementById('resetConfirmInput')?.value || '').trim();
-                if (val !== 'RESET') {
-                    setGlobalAlert('error', 'Confirmación inválida. Debes escribir RESET.');
-                    return;
-                }
-
-                fetch('/admin/actions.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams({ action: 'reset_db', confirm: 'RESET' }).toString()
-                })
-                .then(r => r.json())
-                .then(data => {
-                    if (!data.ok) throw new Error(data.message || 'Error');
-                    closeGlobal();
-                    window.location.reload();
-                })
-                .catch(err => setGlobalAlert('error', err.message || 'No se pudo resetear la BD.'));
-            }
-        });
+        fetch('/admin/actions.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ action: 'reset_db', confirm: 'RESET' }).toString()
+        })
+        .then(r => r.json())
+        .then(data => {
+            if (!data.ok) throw new Error(data.message || 'Error');
+            // Importante: evita quedarte en ficha sin cliente
+            window.location.href = '/dashboard/';
+        })
+        .catch(err => aSetAlert('error', err.message || 'No se pudo resetear la BD.'));
     }
 
     window.AdminModal = window.AdminModal || {};
@@ -360,7 +344,7 @@
                     window.location.href = '/cliente/ficha.php?id=' + encodeURIComponent(data.existing_id) + '&edit=1';
                     return false;
                 }
-            
+
                 cSetAlert('error', data.message || 'No se pudo crear el cliente.');
                 return false;
             }
