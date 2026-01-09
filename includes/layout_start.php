@@ -34,14 +34,15 @@ $usuario_layout = $_SESSION['usuario'] ?? 'Administrador';
         .accent-dot{ background: var(--accent); }
         .modal-backdrop{ background: rgba(2,11,49,0.65); }
 
-        /* Focus profesional (sin borde grueso) */
+        /* ✅ Focus profesional (más fino, sin borde grueso) */
         :where(input, select, textarea){
             transition: box-shadow .15s ease, border-color .15s ease, background-color .15s ease;
         }
+
         :where(input, select, textarea):focus{
             outline: none !important;
             border-color: rgba(37,99,235,.55) !important;
-            box-shadow: 0 0 0 3px rgba(37,99,235,.12) !important;
+            box-shadow: 0 1px 0 rgba(37,99,235,.12), 0 0 0 2px rgba(37,99,235,.10) !important;
             background-color: #ffffff !important;
         }
     </style>
