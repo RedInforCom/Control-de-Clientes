@@ -268,28 +268,23 @@ if (isset($_SESSION['usuario_id'])) {
     </div>
     
     <script>
-        // Password visibility toggle
         function togglePasswordVisibility() {
             const passwordInput = document.getElementById('contrasena');
             const eyeIcon = document.getElementById('eye-icon');
             
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
-                // eye-off (línea)
                 eyeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M3 3l18 18" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M10.5 10.5A2.8 2.8 0 0012 15a3 3 0 002.5-4.5" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M6.2 6.3C3.7 8.1 2 12 2 12s3.5 7 10 7c1.9 0 3.6-.6 5-1.4" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M14.7 14.7C13.9 15.5 13 15.9 12 15.9c-2.1 0-3.8-1.7-3.8-3.8 0-1 .4-1.9 1.2-2.7" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M12 5c6.5 0 10 7 10 7a17 17 0 01-3.3 4.6" />';
             } else {
                 passwordInput.type = 'password';
-                // eye (línea)
                 eyeIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" /><circle cx="12" cy="12" r="3" stroke-width="1.7" />';
             }
         }
         
-        // Clear password on page refresh for security
         window.addEventListener('beforeunload', function() {
             document.getElementById('contrasena').value = '';
         });
-        
-        // Add some interactivity to form groups on focus
+
         document.querySelectorAll('input').forEach(input => {
             input.addEventListener('focus', function() {
                 this.parentElement.parentElement.classList.add('scale-105');

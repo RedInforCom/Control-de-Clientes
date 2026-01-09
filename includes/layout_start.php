@@ -17,7 +17,21 @@ $usuario_layout = $_SESSION['usuario'] ?? 'Administrador';
             --bg2:#020B31;
             --accent:#bfff00;
             --muted:#9ca3af;
+
+            /* ✅ estándar solicitado */
+            --r: 0.3rem;
         }
+
+        /* ✅ Forzar border-radius 0.3rem en TODO el sistema */
+        :where(
+            button, a,
+            input, select, textarea,
+            .soft-card,
+            [class*="rounded"]
+        ){
+            border-radius: var(--r) !important;
+        }
+
         .sidebar-bg{
             background: linear-gradient(180deg, rgba(8,18,40,1) 0%, rgba(2,11,49,1) 100%);
         }
@@ -34,17 +48,37 @@ $usuario_layout = $_SESSION['usuario'] ?? 'Administrador';
         .accent-dot{ background: var(--accent); }
         .modal-backdrop{ background: rgba(2,11,49,0.65); }
 
-        /* ✅ Focus profesional (más fino, sin borde grueso) */
+        /* Focus profesional (sin borde grueso) */
         :where(input, select, textarea){
             transition: box-shadow .15s ease, border-color .15s ease, background-color .15s ease;
         }
-
         :where(input, select, textarea):focus{
             outline: none !important;
             border-color: rgba(37,99,235,.55) !important;
-            box-shadow: 0 1px 0 rgba(37,99,235,.12), 0 0 0 2px rgba(37,99,235,.10) !important;
+            box-shadow: 0 0 0 3px rgba(37,99,235,.12) !important;
             background-color: #ffffff !important;
         }
+
+        /* ✅ Botones/iconos en acciones: sin borde cuadrado, hover con color */
+        .action-icon{
+            width: 2.25rem;
+            height: 2.25rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            border: 0;
+            color: #6b7280; /* gray-500 */
+            transition: background-color .15s ease, color .15s ease;
+        }
+        .action-icon:hover{
+            background: rgba(17,24,39,0.06);
+            color: #111827; /* gray-900 */
+        }
+        .action-icon--blue:hover{ background: rgba(37,99,235,0.10); color:#2563eb; }
+        .action-icon--green:hover{ background: rgba(34,197,94,0.12); color:#16a34a; }
+        .action-icon--orange:hover{ background: rgba(249,115,22,0.12); color:#f97316; }
+        .action-icon--red:hover{ background: rgba(239,68,68,0.10); color:#ef4444; }
     </style>
 </head>
 <body class="min-h-screen app-bg">

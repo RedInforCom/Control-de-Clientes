@@ -10,7 +10,7 @@ $has_renewal_alerts = $has_renewal_alerts ?? false;
 
         <div class="flex items-center gap-5">
             <!-- Notifications -->
-            <button class="relative p-2 rounded-lg hover:bg-gray-100 transition" aria-label="Notificaciones">
+            <button class="relative p-2 hover:bg-gray-100 transition" aria-label="Notificaciones">
                 <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M18 8a6 6 0 10-12 0c0 7-3 7-3 7h18s-3 0-3-7"></path>
                     <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
@@ -25,13 +25,13 @@ $has_renewal_alerts = $has_renewal_alerts ?? false;
             <div class="relative">
                 <button
                     type="button"
-                    class="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-100 transition"
+                    class="flex items-center gap-3 p-2 hover:bg-gray-100 transition"
                     aria-haspopup="menu"
                     aria-expanded="false"
                     data-user-menu-button
                 >
                     <!-- User icon -->
-                    <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center">
+                    <div class="w-10 h-10 bg-blue-600 text-white flex items-center justify-center" style="border-radius:0.3rem;">
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M20 21v-1a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v1"></path>
                             <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
@@ -50,11 +50,10 @@ $has_renewal_alerts = $has_renewal_alerts ?? false;
 
                 <!-- Dropdown menu -->
                 <div
-                    class="hidden absolute right-0 mt-2 w-56 soft-card rounded-xl overflow-hidden z-30"
+                    class="hidden absolute right-0 mt-2 w-56 soft-card overflow-hidden z-30"
                     role="menu"
                     data-user-menu
                 >
-                    <!-- FIX HEADER: onclick directo + stopPropagation para que el click global no lo cierre antes -->
                     <a
                         href="#"
                         class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition"
