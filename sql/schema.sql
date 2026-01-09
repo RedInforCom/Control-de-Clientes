@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 09-01-2026 a las 14:42:36
+-- Tiempo de generación: 09-01-2026 a las 15:00:25
 -- Versión del servidor: 10.11.15-MariaDB-cll-lve
 -- Versión de PHP: 8.3.29
 
@@ -73,15 +73,14 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   `nombre_cliente` varchar(150) NOT NULL,
   `contacto` varchar(150) DEFAULT NULL,
   `telefono` varchar(20) DEFAULT NULL,
-  `email` varchar(100) DEFAULT NULL,
   `empresa` varchar(150) DEFAULT NULL,
   `ruc_dni` varchar(20) DEFAULT NULL,
   `direccion` text DEFAULT NULL,
   `ciudad` varchar(100) DEFAULT NULL,
   `pais` varchar(100) DEFAULT NULL,
-  `notas_adicionales` text DEFAULT NULL,
+  `notas_generales` text DEFAULT NULL,
   `estado` enum('Activo','Inactivo','Suspendido','En Revisión') DEFAULT 'Activo',
-  `fecha_creacion` timestamp NULL DEFAULT current_timestamp(),
+  `fecha_creacion` datetime DEFAULT current_timestamp(),
   `fecha_actualizacion` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `correo` varchar(190) NOT NULL,
   `dominio` varchar(255) NOT NULL,
@@ -330,6 +329,27 @@ CREATE TABLE IF NOT EXISTS `servicios_hosting` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `servicios_otro`
+--
+
+DROP TABLE IF EXISTS `servicios_otro`;
+CREATE TABLE IF NOT EXISTS `servicios_otro` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cliente_id` int(11) NOT NULL,
+  `tipo_id` int(11) NOT NULL,
+  `fecha_contratacion` date NOT NULL,
+  `precio` decimal(10,2) NOT NULL,
+  `notas` text DEFAULT NULL,
+  `fecha_creacion` timestamp NULL DEFAULT current_timestamp(),
+  `fecha_actualizacion` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `tipo_id` (`tipo_id`),
+  KEY `idx_cliente_id` (`cliente_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tipos_correo`
 --
 
@@ -373,6 +393,25 @@ CREATE TABLE IF NOT EXISTS `tipos_diseno_grafico` (
 
 DROP TABLE IF EXISTS `tipos_diseno_web`;
 CREATE TABLE IF NOT EXISTS `tipos_diseno_web` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  `precio` decimal(10,2) NOT NULL,
+  `descripcion` text DEFAULT NULL,
+  `activo` tinyint(1) DEFAULT 1,
+  `fecha_creacion` timestamp NULL DEFAULT current_timestamp(),
+  `fecha_actualizacion` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `nombre` (`nombre`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipos_otro`
+--
+
+DROP TABLE IF EXISTS `tipos_otro`;
+CREATE TABLE IF NOT EXISTS `tipos_otro` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
   `precio` decimal(10,2) NOT NULL,
@@ -455,6 +494,13 @@ ALTER TABLE `servicios_dominios`
 ALTER TABLE `servicios_hosting`
   ADD CONSTRAINT `servicios_hosting_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `servicios_hosting_ibfk_2` FOREIGN KEY (`plan_id`) REFERENCES `planes_hosting` (`id`);
+
+--
+-- Filtros para la tabla `servicios_otro`
+--
+ALTER TABLE `servicios_otro`
+  ADD CONSTRAINT `servicios_otro_ibfk_1` FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `servicios_otro_ibfk_2` FOREIGN KEY (`tipo_id`) REFERENCES `tipos_otro` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
