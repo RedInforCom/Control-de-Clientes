@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 09-01-2026 a las 21:45:51
+-- Tiempo de generación: 09-01-2026 a las 23:41:25
 -- Versión del servidor: 10.11.15-MariaDB-cll-lve
 -- Versión de PHP: 8.3.29
 
@@ -188,6 +188,7 @@ CREATE TABLE IF NOT EXISTS `registrantes` (
   `activo` tinyint(1) DEFAULT 1,
   `fecha_creacion` timestamp NULL DEFAULT current_timestamp(),
   `fecha_actualizacion` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `precio` decimal(10,2) NOT NULL DEFAULT 0.00,
   PRIMARY KEY (`id`),
   UNIQUE KEY `nombre` (`nombre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

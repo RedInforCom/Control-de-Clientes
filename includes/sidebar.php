@@ -1,4 +1,4 @@
-<aside class="sidebar-bg w-72 text-white flex flex-col">
+<aside class="sidebar-bg w-72 text-white flex flex-col sticky top-0 h-screen overflow-y-auto">
     <div class="p-6 border-b border-white/10 flex items-center justify-center">
         <img src="/assets/logo.webp" alt="INFORCOM" class="object-contain" style="width:80%; height:auto;">
     </div>
@@ -151,7 +151,13 @@
             const buttons = document.querySelectorAll('[data-accordion-button]');
             if (!buttons.length) return;
 
+            const keepOpenKey = 'clientes';
+            const keepOpenBtn = document.querySelector('[data-accordion-button="clientes"]');
+            const keepClientesOpen = keepOpenBtn && keepOpenBtn.getAttribute('aria-expanded') === 'true';
+
             function closePanel(key) {
+                if (keepClientesOpen && key === keepOpenKey) return; // ✅ no cerrar clientes si está activo por navegación
+
                 const panel = document.querySelector(`[data-accordion-panel="${key}"]`);
                 const chevron = document.querySelector(`[data-accordion-chevron="${key}"]`);
                 const btn = document.querySelector(`[data-accordion-button="${key}"]`);
@@ -182,7 +188,6 @@
                 panel.style.maxHeight = '0px';
                 if (chevron) chevron.style.transform = 'rotate(0deg)';
 
-                // ✅ Mantener abierto si viene como aria-expanded=true (Clientes activo)
                 if (btn.getAttribute('aria-expanded') === 'true') {
                     openPanel(key);
                 }

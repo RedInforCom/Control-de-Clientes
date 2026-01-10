@@ -59,6 +59,17 @@ $estado = (string)($cliente['estado'] ?? 'Activo');
 $fecha_creacion_value = !empty($cliente['fecha_creacion']) ? (string)$cliente['fecha_creacion'] : '';
 $notas_value = (string)($cliente['notas_adicionales'] ?? '');
 $readonly = !$edit;
+
+function estado_color(string $estado): array {
+    $estado = trim($estado);
+    if ($estado === 'Activo') return ['bg' => '#dcfce7', 'fg' => '#166534'];        // green
+    if ($estado === 'Suspendido') return ['bg' => '#fee2e2', 'fg' => '#991b1b'];    // red
+    if ($estado === 'Inactivo') return ['bg' => '#e5e7eb', 'fg' => '#374151'];     // gray
+    if ($estado === 'En Revisión') return ['bg' => '#fef9c3', 'fg' => '#854d0e'];  // yellow
+    return ['bg' => '#e5e7eb', 'fg' => '#374151'];
+}
+
+$ec = estado_color($estado);
 ?>
 <?php require_once __DIR__ . '/../includes/layout_start.php'; ?>
 <?php require_once __DIR__ . '/../includes/sidebar.php'; ?>
@@ -67,7 +78,7 @@ $readonly = !$edit;
     <?php require_once __DIR__ . '/../includes/header.php'; ?>
 
     <div class="p-6 flex-1">
-        <div class="flex items-start justify-between gap-4 mb-6">
+        <div class="flex items-start justify-between gap-4 mb-5">
             <div class="flex items-start gap-3">
                 <a href="/clientes.php" class="mt-1 text-gray-500 hover:text-gray-800 transition" title="Volver">
                     <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -81,15 +92,15 @@ $readonly = !$edit;
                 </div>
             </div>
 
-            <!-- ✅ botones pequeños con texto + icono -->
+            <!-- ✅ botones más discretos (mismos colores) -->
             <div class="flex items-center gap-2">
                 <a href="<?php echo htmlspecialchars($waLink); ?>"
                    target="<?php echo $telDigits !== '' ? '_blank' : '_self'; ?>"
                    onclick="<?php echo $telDigits !== '' ? '' : "alert('No hay teléfono'); return false;"; ?>"
-                   class="inline-flex items-center gap-2 px-3 py-[0.35rem] text-white font-semibold shadow-sm"
+                   class="inline-flex items-center gap-2 px-2 py-[0.25rem] text-white font-semibold shadow-sm text-sm"
                    style="background:#16a34a;"
                    title="WhatsApp">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.6L3 21l1.9-5.5A8.5 8.5 0 1 1 21 11.5z"></path>
                     </svg>
                     WhatsApp
@@ -98,10 +109,10 @@ $readonly = !$edit;
                 <a href="<?php echo htmlspecialchars($dominioLink); ?>"
                    target="<?php echo $dominio !== '' ? '_blank' : '_self'; ?>"
                    onclick="<?php echo $dominio !== '' ? '' : "alert('No hay dominio'); return false;"; ?>"
-                   class="inline-flex items-center gap-2 px-3 py-[0.35rem] text-white font-semibold shadow-sm"
+                   class="inline-flex items-center gap-2 px-2 py-[0.25rem] text-white font-semibold shadow-sm text-sm"
                    style="background:#2563eb;"
                    title="Web">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="10"></circle>
                         <path d="M2 12h20"></path>
                         <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
@@ -111,10 +122,10 @@ $readonly = !$edit;
 
                 <?php if (!$edit): ?>
                     <a href="/cliente/ficha.php?id=<?php echo (int)$cliente['id']; ?>&edit=1"
-                       class="inline-flex items-center gap-2 px-3 py-[0.35rem] text-white font-semibold shadow-sm"
+                       class="inline-flex items-center gap-2 px-2 py-[0.25rem] text-white font-semibold shadow-sm text-sm"
                        style="background:#f97316;"
                        title="Editar">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 20h9"></path>
                             <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"></path>
                         </svg>
@@ -124,26 +135,96 @@ $readonly = !$edit;
             </div>
         </div>
 
-        <!-- ✅ cambios SOLO de ficha: labels normales + padding input-field -->
         <style>
+            /* estilos locales (paneles/inputs) */
+            .panel-head{
+                border-bottom: 1px solid rgba(229,231,235,1);
+                padding: 0.6rem 1rem; /* ✅ pedido */
+                display:flex;
+                align-items:center;
+                gap:0.6rem;
+                font-weight:700;
+            }
+            .panel-body{ padding: 0.85rem 1rem; } /* ✅ más compacto */
+
+            .panel-blue{ border-top: 3px solid #2563eb; }
+            .panel-blue .panel-head{ background: rgba(37,99,235,0.08); color:#1d4ed8; }
+
+            .panel-purple{ border-top: 3px solid #7c3aed; }
+            .panel-purple .panel-head{ background: rgba(124,58,237,0.08); color:#6d28d9; }
+
+            .panel-green{ border-top: 3px solid #16a34a; }
+            .panel-green .panel-head{ background: rgba(22,163,74,0.10); color:#166534; }
+
+            .input-wrap{ position:relative; }
+            .input-ico{
+                position:absolute;
+                left:0.75rem;
+                top:50%;
+                transform: translateY(-50%);
+                color:#9ca3af;
+            }
+
             .field-label{
                 display:block;
                 font-size: 0.9rem;
                 color:#374151;
                 font-weight: 600;
-                margin-bottom: 0.35rem;
+                margin-bottom: 0.1rem; /* ✅ pedido */
             }
+
             .input-field{
-                padding: 0.45rem 0.75rem !important;
+                width:100%;
+                padding: 0.45rem 0.75rem !important; /* ✅ pedido */
                 padding-left: 2.5rem !important;
+                border: 1px solid #d1d5db;
+                background: #f9fafb;
+            }
+
+            .textarea-field{
+                width:100%;
+                padding: 0.55rem 0.75rem;
+                border: 1px solid #d1d5db;
+                background: #f9fafb;
+                min-height: 5.5rem; /* ✅ más compacto */
+                resize: vertical;
+            }
+
+            .readonly{ opacity:0.85; }
+
+            /* Estado General (solo vista): barra de color como imagen */
+            .estado-pill{
+                width:100%;
+                padding: 0.55rem 0.75rem;
+                border: 1px solid #d1d5db;
+                border-radius: 0.3rem;
+                text-align:center;
+                font-weight:700;
+            }
+
+            /* Panel final acciones (botones más pequeños) */
+            .actions-row{
+                display:flex;
+                justify-content:flex-end;
+                gap:0.6rem;
+                flex-wrap:wrap;
+            }
+            .btn-small{
+                padding: 0.35rem 0.75rem;
+                font-size: 0.9rem;
+                border-radius:0.3rem;
+                display:inline-flex;
+                align-items:center;
+                justify-content:center;
+                gap:0.5rem;
+                white-space:nowrap;
             }
         </style>
 
-        <form id="clienteFichaForm" class="space-y-6" onsubmit="return false;">
+        <form id="clienteFichaForm" class="space-y-5" onsubmit="return false;">
             <input type="hidden" id="fichaId" value="<?php echo (int)$cliente['id']; ?>" />
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Datos básicos -->
                 <div class="soft-card overflow-hidden panel-blue lg:col-span-2">
                     <div class="panel-head">
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -154,7 +235,7 @@ $readonly = !$edit;
                     </div>
 
                     <div class="panel-body">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
                                 <label class="field-label">Cliente / Empresa</label>
                                 <div class="input-wrap readonly">
@@ -225,7 +306,6 @@ $readonly = !$edit;
                     </div>
                 </div>
 
-                <!-- Estado -->
                 <div class="soft-card overflow-hidden panel-purple">
                     <div class="panel-head">
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -236,17 +316,22 @@ $readonly = !$edit;
                         Estado y Metadata
                     </div>
 
-                    <div class="panel-body space-y-5">
+                    <div class="panel-body space-y-4">
                         <div>
                             <label class="field-label">Estado General</label>
-                            <div class="input-wrap <?php echo $readonly ? 'readonly' : ''; ?>">
-                                <span class="input-ico">
-                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M12 2v20"></path>
-                                        <path d="M2 12h20"></path>
-                                    </svg>
-                                </span>
-                                <?php if ($edit): ?>
+
+                            <?php if ($edit): ?>
+                                <div class="input-wrap <?php echo $readonly ? 'readonly' : ''; ?>">
+                                    <!-- icono de estado dinámico -->
+                                    <span class="input-ico" id="estadoIcon"
+                                          style="color: <?php echo htmlspecialchars($ec['fg']); ?>;">
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <path d="M12 8h.01"></path>
+                                            <path d="M11 12h1v4h1"></path>
+                                        </svg>
+                                    </span>
+
                                     <select id="estado" class="input-field" <?php echo $readonly ? 'disabled' : ''; ?>>
                                         <?php foreach (['Activo','Suspendido','Inactivo','En Revisión'] as $opt): ?>
                                             <option value="<?php echo htmlspecialchars($opt); ?>" <?php echo $estado === $opt ? 'selected' : ''; ?>>
@@ -254,10 +339,13 @@ $readonly = !$edit;
                                             </option>
                                         <?php endforeach; ?>
                                     </select>
-                                <?php else: ?>
-                                    <input class="input-field" value="<?php echo htmlspecialchars($estado); ?>" disabled />
-                                <?php endif; ?>
-                            </div>
+                                </div>
+                            <?php else: ?>
+                                <!-- ✅ solo estado general con color (como imagen) -->
+                                <div class="estado-pill" style="background: <?php echo htmlspecialchars($ec['bg']); ?>; color: <?php echo htmlspecialchars($ec['fg']); ?>; border-color: <?php echo htmlspecialchars($ec['bg']); ?>;">
+                                    <?php echo htmlspecialchars($estado); ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
 
                         <div>
@@ -283,7 +371,6 @@ $readonly = !$edit;
                 </div>
             </div>
 
-            <!-- Servicios -->
             <div class="soft-card overflow-hidden panel-green">
                 <div class="panel-head">
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -295,21 +382,19 @@ $readonly = !$edit;
                 </div>
 
                 <div class="panel-body">
-                    <div class="text-sm text-gray-600 text-center py-10">
+                    <div class="text-sm text-gray-600 text-center py-8">
                         Esta sección se implementará próximamente
                     </div>
                 </div>
             </div>
 
-            <!-- ✅ Panel nuevo abajo con botones (solo edit) -->
             <?php if ($edit): ?>
                 <div class="soft-card overflow-hidden">
                     <div class="panel-body">
-                        <div class="grid grid-cols-2 gap-3">
+                        <div class="actions-row">
                             <a href="/cliente/ficha.php?id=<?php echo (int)$cliente['id']; ?>"
-                               class="w-full px-4 py-[0.45rem] border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition inline-flex items-center justify-center gap-2"
-                               style="border-radius:0.3rem;">
-                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                               class="btn-small border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M18 6L6 18"></path>
                                     <path d="M6 6l12 12"></path>
                                 </svg>
@@ -317,10 +402,10 @@ $readonly = !$edit;
                             </a>
 
                             <button type="button"
-                                    class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
-                                    style="border-radius:0.3rem; background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);"
+                                    class="btn-small text-white font-semibold inline-flex items-center justify-center gap-2"
+                                    style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);"
                                     onclick="FichaCliente.save()">
-                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
                                     <path d="M17 21v-8H7v8"></path>
                                     <path d="M7 3v5h8"></path>
@@ -386,9 +471,28 @@ window.FichaCliente.save = async function () {
 
 (function () {
     const phone = document.getElementById('telefono');
-    if (!phone) return;
-    phone.addEventListener('input', () => {
-        phone.value = phone.value.replace(/[^\d]/g, '');
-    });
+    if (phone) {
+        phone.addEventListener('input', () => {
+            phone.value = phone.value.replace(/[^\d]/g, '');
+        });
+    }
+
+    // icono/colores dinámicos del select Estado
+    const estadoSelect = document.getElementById('estado');
+    const estadoIcon = document.getElementById('estadoIcon');
+    if (estadoSelect && estadoIcon) {
+        const colors = {
+            'Activo': '#166534',
+            'Suspendido': '#991b1b',
+            'Inactivo': '#374151',
+            'En Revisión': '#854d0e'
+        };
+        function applyColor() {
+            const v = estadoSelect.value || 'Activo';
+            estadoIcon.style.color = colors[v] || '#374151';
+        }
+        estadoSelect.addEventListener('change', applyColor);
+        applyColor();
+    }
 })();
 </script>
