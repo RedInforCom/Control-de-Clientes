@@ -32,7 +32,7 @@ $correo   = trim((string)($_POST['correo'] ?? ''));
 
 $estado = trim((string)($_POST['estado'] ?? 'Activo'));
 $fecha_creacion = trim((string)($_POST['fecha_creacion'] ?? ''));
-$notas_generales = trim((string)($_POST['notas_generales'] ?? ''));
+$notas_adicionales = trim((string)($_POST['notas_adicionales'] ?? ''));
 
 if ($contacto === '' || $telefono === '' || $dominio === '' || $correo === '') {
     http_response_code(400);
@@ -78,7 +78,8 @@ if (!preg_match('/^[a-z]{2,24}$/i', $tld)) {
     exit;
 }
 
-$allowedEstados = ['Activo', 'Inactivo', 'Suspendido', 'En Revisión...'];
+/* ✅ Tu BD usa 'En Revisión' (sin puntos) */
+$allowedEstados = ['Activo', 'Inactivo', 'Suspendido', 'En Revisión'];
 if (!in_array($estado, $allowedEstados, true)) {
     http_response_code(400);
     echo json_encode(['ok' => false, 'message' => 'Estado inválido.']);
@@ -86,7 +87,6 @@ if (!in_array($estado, $allowedEstados, true)) {
 }
 
 try {
-    // Update base fields (these exist)
     $stmt = $pdo->prepare("UPDATE clientes
                            SET contacto = :contacto,
                                telefono = :telefono,
@@ -104,21 +104,23 @@ try {
         'id' => $id,
     ]);
 
-    // Optional fields: try if columns exist
-    if ($fecha_creacion !== '' || $notas_generales !== '') {
+    // Opcionales según tu BD:
+    // - fecha_creacion existe (timestamp)
+    // - notas_adicionales existe
+    if ($fecha_creacion !== '' || $notas_adicionales !== '') {
         try {
             $stmt2 = $pdo->prepare("UPDATE clientes
                                     SET fecha_creacion = :fecha_creacion,
-                                        notas_generales = :notas_generales
+                                        notas_adicionales = :notas_adicionales
                                     WHERE id = :id
                                     LIMIT 1");
             $stmt2->execute([
                 'fecha_creacion' => $fecha_creacion !== '' ? $fecha_creacion : null,
-                'notas_generales' => $notas_generales,
+                'notas_adicionales' => $notas_adicionales,
                 'id' => $id,
             ]);
         } catch (Throwable $e2) {
-            // ignore until DB has these columns
+            // Si falla por formato fecha, lo ignoramos aquí (lo controlaremos en UI/validación luego)
         }
     }
 

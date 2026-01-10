@@ -15,12 +15,6 @@ declare(strict_types=1);
 @ini_set('session.gc_maxlifetime', '604800'); // 7 días
 @ini_set('session.cookie_lifetime', '0');     // hasta cerrar navegador
 
-if (session_status() === PHP_SESSION_ACTIVE) {
-    // Ya existe sesión; solo marcamos actividad.
-    $_SESSION['_last_seen'] = time();
-    return;
-}
-
 if (!headers_sent()) {
     $secure = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
     $httponly = true;
@@ -33,7 +27,9 @@ if (!headers_sent()) {
     @session_set_cookie_params(0, $path, $domain, $secure, $httponly);
 }
 
-@session_start();
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    @session_start();
+}
 
 if (isset($_SESSION)) {
     $_SESSION['_last_seen'] = time();

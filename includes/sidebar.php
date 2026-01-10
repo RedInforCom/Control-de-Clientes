@@ -3,8 +3,16 @@
         <img src="/assets/logo.webp" alt="INFORCOM" class="object-contain" style="width:80%; height:auto;">
     </div>
 
+    <?php
+        $active_menu_value = ($active_menu ?? '');
+        $clientes_open = ($active_menu_value === 'clientes');
+
+        $current_path = parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH) ?: '';
+        $is_ver_clientes = ($current_path === '/clientes.php');
+    ?>
+
     <nav class="px-4 py-4 space-y-1 text-sm">
-        <a href="/dashboard/" class="flex items-center gap-3 px-3 py-[0.35rem] <?php echo (($active_menu ?? '') === 'dashboard') ? 'active-item' : 'hover:bg-white/5'; ?> transition">
+        <a href="/dashboard/" class="flex items-center gap-3 px-3 py-[0.35rem] <?php echo ($active_menu_value === 'dashboard') ? 'active-item' : 'hover:bg-white/5'; ?> transition">
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 12l9-9 9 9"></path>
                 <path d="M9 21V9h6v12"></path>
@@ -14,9 +22,9 @@
 
         <div>
             <button type="button"
-                class="w-full flex items-center gap-3 px-3 py-[0.35rem] hover:bg-white/5 transition"
+                class="w-full flex items-center gap-3 px-3 py-[0.35rem] <?php echo $clientes_open ? 'active-item' : 'hover:bg-white/5'; ?> transition"
                 data-accordion-button="clientes"
-                aria-expanded="false"
+                aria-expanded="<?php echo $clientes_open ? 'true' : 'false'; ?>"
             >
                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
@@ -33,7 +41,7 @@
             <div class="overflow-hidden max-h-0 transition-[max-height] duration-300 ease-in-out" data-accordion-panel="clientes">
                 <div class="mt-1 ml-6 space-y-1 border-l border-white/10 pl-4">
                     <a href="/clientes.php"
-                       class="flex items-center gap-2 px-2 py-[0.35rem] text-white/80 hover:text-white hover:bg-white/5 transition">
+                       class="flex items-center gap-2 px-2 py-[0.35rem] transition <?php echo $is_ver_clientes ? 'text-white bg-white/5' : 'text-white/80 hover:text-white hover:bg-white/5'; ?>">
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M8 6h13"></path>
                             <path d="M8 12h13"></path>
@@ -173,6 +181,11 @@
 
                 panel.style.maxHeight = '0px';
                 if (chevron) chevron.style.transform = 'rotate(0deg)';
+
+                // ✅ Mantener abierto si viene como aria-expanded=true (Clientes activo)
+                if (btn.getAttribute('aria-expanded') === 'true') {
+                    openPanel(key);
+                }
 
                 btn.addEventListener('click', () => {
                     const expanded = btn.getAttribute('aria-expanded') === 'true';

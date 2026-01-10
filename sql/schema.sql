@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 09-01-2026 a las 15:00:25
+-- Tiempo de generación: 09-01-2026 a las 21:45:51
 -- Versión del servidor: 10.11.15-MariaDB-cll-lve
 -- Versión de PHP: 8.3.29
 
@@ -84,6 +84,7 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   `fecha_actualizacion` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `correo` varchar(190) NOT NULL,
   `dominio` varchar(255) NOT NULL,
+  `notas_adicionales` text DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ux_clientes_nombre_cliente` (`nombre_cliente`),
   UNIQUE KEY `ux_clientes_dominio` (`dominio`)
