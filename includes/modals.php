@@ -324,3 +324,385 @@
         </div>
     </div>
 </div>
+
+<!-- ========================= -->
+<!-- MODALES CATALOGOS (7)     -->
+<!-- ========================= -->
+
+<!-- Modal: Planes Hosting -->
+<div id="modalPlanesHosting" class="fixed inset-0 hidden items-center justify-center p-4 z-[50]">
+    <div class="absolute inset-0 modal-backdrop"></div>
+    <div class="relative w-full max-w-3xl bg-white shadow-2xl overflow-hidden" style="border-radius:0.3rem; border:1px solid #1F54DE;">
+        <div class="px-5 py-[0.7rem] text-white flex items-start justify-between" style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+            <div class="text-base font-semibold">Planes Hosting</div>
+            <button type="button" class="p-2 hover:bg-white/10 transition" style="border-radius:0.3rem;" data-cat-x="planes_hosting" aria-label="Cerrar">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M18 6L6 18"></path><path d="M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="p-5 space-y-4">
+            <div id="alert_planes_hosting" class="hidden border p-3 text-sm" style="border-radius:0.3rem;"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <input id="in_planes_hosting_nombre" class="w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="border-radius:0.3rem; background:#F9FAFB;" placeholder="Nombre del plan">
+                <input id="in_planes_hosting_precio" class="w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="border-radius:0.3rem; background:#F9FAFB;" placeholder="Precio" inputmode="decimal">
+                <button type="button" id="btn_planes_hosting_guardar"
+                        class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem; background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+                    Guardar
+                </button>
+            </div>
+
+            <div class="overflow-x-auto border border-gray-200" style="border-radius:0.3rem;">
+                <table class="min-w-full text-sm">
+                    <thead class="bg-gray-50 text-gray-600">
+                        <tr>
+                            <th class="text-left px-4 py-3 font-semibold">NOMBRE</th>
+                            <th class="text-left px-4 py-3 font-semibold">PRECIO</th>
+                            <th class="text-center px-4 py-3 font-semibold">ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tb_planes_hosting" class="divide-y divide-gray-200"></tbody>
+                </table>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <button type="button"
+                        class="w-full px-4 py-[0.45rem] border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem;"
+                        data-cat-x="planes_hosting">
+                    Cancelar
+                </button>
+                <button type="button"
+                        class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem; background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);"
+                        onclick="Catalogs.reset('planes_hosting')">
+                    Nuevo
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Dominios TLD -->
+<div id="modalTldDominios" class="fixed inset-0 hidden items-center justify-center p-4 z-[50]">
+    <div class="absolute inset-0 modal-backdrop"></div>
+    <div class="relative w-full max-w-3xl bg-white shadow-2xl overflow-hidden" style="border-radius:0.3rem; border:1px solid #1F54DE;">
+        <div class="px-5 py-[0.7rem] text-white flex items-start justify-between" style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+            <div class="text-base font-semibold">Dominios TLD</div>
+            <button type="button" class="p-2 hover:bg-white/10 transition" style="border-radius:0.3rem;" data-cat-x="tld_dominios" aria-label="Cerrar">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M18 6L6 18"></path><path d="M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="p-5 space-y-4">
+            <div id="alert_tld_dominios" class="hidden border p-3 text-sm" style="border-radius:0.3rem;"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <input id="in_tld_dominios_nombre" class="w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="border-radius:0.3rem; background:#F9FAFB;" placeholder="TLD (ej: .com.pe)">
+                <input id="in_tld_dominios_precio" class="w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="border-radius:0.3rem; background:#F9FAFB;" placeholder="Precio" inputmode="decimal">
+                <button type="button" id="btn_tld_dominios_guardar"
+                        class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem; background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+                    Guardar
+                </button>
+            </div>
+
+            <div class="overflow-x-auto border border-gray-200" style="border-radius:0.3rem;">
+                <table class="min-w-full text-sm">
+                    <thead class="bg-gray-50 text-gray-600">
+                        <tr>
+                            <th class="text-left px-4 py-3 font-semibold">TLD</th>
+                            <th class="text-left px-4 py-3 font-semibold">PRECIO</th>
+                            <th class="text-center px-4 py-3 font-semibold">ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tb_tld_dominios" class="divide-y divide-gray-200"></tbody>
+                </table>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <button type="button"
+                        class="w-full px-4 py-[0.45rem] border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem;"
+                        data-cat-x="tld_dominios">
+                    Cancelar
+                </button>
+                <button type="button"
+                        class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem; background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);"
+                        onclick="Catalogs.reset('tld_dominios')">
+                    Nuevo
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Registrantes -->
+<div id="modalRegistrantes" class="fixed inset-0 hidden items-center justify-center p-4 z-[50]">
+    <div class="absolute inset-0 modal-backdrop"></div>
+    <div class="relative w-full max-w-3xl bg-white shadow-2xl overflow-hidden" style="border-radius:0.3rem; border:1px solid #1F54DE;">
+        <div class="px-5 py-[0.7rem] text-white flex items-start justify-between" style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+            <div class="text-base font-semibold">Dominios Registrante</div>
+            <button type="button" class="p-2 hover:bg-white/10 transition" style="border-radius:0.3rem;" data-cat-x="registrantes" aria-label="Cerrar">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M18 6L6 18"></path><path d="M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="p-5 space-y-4">
+            <div id="alert_registrantes" class="hidden border p-3 text-sm" style="border-radius:0.3rem;"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <input id="in_registrantes_nombre" class="w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="border-radius:0.3rem; background:#F9FAFB;" placeholder="Empresa registrante">
+                <input id="in_registrantes_precio" class="w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="border-radius:0.3rem; background:#F9FAFB;" placeholder="Precio" inputmode="decimal">
+                <button type="button" id="btn_registrantes_guardar"
+                        class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem; background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+                    Guardar
+                </button>
+            </div>
+
+            <div class="overflow-x-auto border border-gray-200" style="border-radius:0.3rem;">
+                <table class="min-w-full text-sm">
+                    <thead class="bg-gray-50 text-gray-600">
+                        <tr>
+                            <th class="text-left px-4 py-3 font-semibold">REGISTRANTE</th>
+                            <th class="text-left px-4 py-3 font-semibold">PRECIO</th>
+                            <th class="text-center px-4 py-3 font-semibold">ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tb_registrantes" class="divide-y divide-gray-200"></tbody>
+                </table>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <button type="button"
+                        class="w-full px-4 py-[0.45rem] border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem;"
+                        data-cat-x="registrantes">
+                    Cancelar
+                </button>
+                <button type="button"
+                        class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem; background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);"
+                        onclick="Catalogs.reset('registrantes')">
+                    Nuevo
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Tipos de Correo -->
+<div id="modalTiposCorreo" class="fixed inset-0 hidden items-center justify-center p-4 z-[50]">
+    <div class="absolute inset-0 modal-backdrop"></div>
+    <div class="relative w-full max-w-3xl bg-white shadow-2xl overflow-hidden" style="border-radius:0.3rem; border:1px solid #1F54DE;">
+        <div class="px-5 py-[0.7rem] text-white flex items-start justify-between" style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+            <div class="text-base font-semibold">Tipo de Correo</div>
+            <button type="button" class="p-2 hover:bg-white/10 transition" style="border-radius:0.3rem;" data-cat-x="tipos_correo" aria-label="Cerrar">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M18 6L6 18"></path><path d="M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="p-5 space-y-4">
+            <div id="alert_tipos_correo" class="hidden border p-3 text-sm" style="border-radius:0.3rem;"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <input id="in_tipos_correo_nombre" class="w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="border-radius:0.3rem; background:#F9FAFB;" placeholder="Tipo (Zoho, Gmail...)">
+                <input id="in_tipos_correo_precio" class="w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="border-radius:0.3rem; background:#F9FAFB;" placeholder="Precio" inputmode="decimal">
+                <button type="button" id="btn_tipos_correo_guardar"
+                        class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem; background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+                    Guardar
+                </button>
+            </div>
+
+            <div class="overflow-x-auto border border-gray-200" style="border-radius:0.3rem;">
+                <table class="min-w-full text-sm">
+                    <thead class="bg-gray-50 text-gray-600">
+                        <tr>
+                            <th class="text-left px-4 py-3 font-semibold">TIPO</th>
+                            <th class="text-left px-4 py-3 font-semibold">PRECIO</th>
+                            <th class="text-center px-4 py-3 font-semibold">ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tb_tipos_correo" class="divide-y divide-gray-200"></tbody>
+                </table>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <button type="button"
+                        class="w-full px-4 py-[0.45rem] border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem;"
+                        data-cat-x="tipos_correo">
+                    Cancelar
+                </button>
+                <button type="button"
+                        class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem; background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);"
+                        onclick="Catalogs.reset('tipos_correo')">
+                    Nuevo
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Diseño Web -->
+<div id="modalTiposDisenoWeb" class="fixed inset-0 hidden items-center justify-center p-4 z-[50]">
+    <div class="absolute inset-0 modal-backdrop"></div>
+    <div class="relative w-full max-w-3xl bg-white shadow-2xl overflow-hidden" style="border-radius:0.3rem; border:1px solid #1F54DE;">
+        <div class="px-5 py-[0.7rem] text-white flex items-start justify-between" style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+            <div class="text-base font-semibold">Diseño Web</div>
+            <button type="button" class="p-2 hover:bg-white/10 transition" style="border-radius:0.3rem;" data-cat-x="tipos_diseno_web" aria-label="Cerrar">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M18 6L6 18"></path><path d="M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="p-5 space-y-4">
+            <div id="alert_tipos_diseno_web" class="hidden border p-3 text-sm" style="border-radius:0.3rem;"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <input id="in_tipos_diseno_web_nombre" class="w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="border-radius:0.3rem; background:#F9FAFB;" placeholder="Tipo (Landing, Tienda...)">
+                <input id="in_tipos_diseno_web_precio" class="w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="border-radius:0.3rem; background:#F9FAFB;" placeholder="Precio" inputmode="decimal">
+                <button type="button" id="btn_tipos_diseno_web_guardar"
+                        class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem; background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+                    Guardar
+                </button>
+            </div>
+
+            <div class="overflow-x-auto border border-gray-200" style="border-radius:0.3rem;">
+                <table class="min-w-full text-sm">
+                    <thead class="bg-gray-50 text-gray-600">
+                        <tr>
+                            <th class="text-left px-4 py-3 font-semibold">TIPO</th>
+                            <th class="text-left px-4 py-3 font-semibold">PRECIO</th>
+                            <th class="text-center px-4 py-3 font-semibold">ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tb_tipos_diseno_web" class="divide-y divide-gray-200"></tbody>
+                </table>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <button type="button"
+                        class="w-full px-4 py-[0.45rem] border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem;"
+                        data-cat-x="tipos_diseno_web">
+                    Cancelar
+                </button>
+                <button type="button"
+                        class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem; background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);"
+                        onclick="Catalogs.reset('tipos_diseno_web')">
+                    Nuevo
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: Diseño Gráfico -->
+<div id="modalTiposDisenoGrafico" class="fixed inset-0 hidden items-center justify-center p-4 z-[50]">
+    <div class="absolute inset-0 modal-backdrop"></div>
+    <div class="relative w-full max-w-3xl bg-white shadow-2xl overflow-hidden" style="border-radius:0.3rem; border:1px solid #1F54DE;">
+        <div class="px-5 py-[0.7rem] text-white flex items-start justify-between" style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+            <div class="text-base font-semibold">Diseño Gráfico</div>
+            <button type="button" class="p-2 hover:bg-white/10 transition" style="border-radius:0.3rem;" data-cat-x="tipos_diseno_grafico" aria-label="Cerrar">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M18 6L6 18"></path><path d="M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="p-5 space-y-4">
+            <div id="alert_tipos_diseno_grafico" class="hidden border p-3 text-sm" style="border-radius:0.3rem;"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <input id="in_tipos_diseno_grafico_nombre" class="w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="border-radius:0.3rem; background:#F9FAFB;" placeholder="Tipo (Logo, Video...)">
+                <input id="in_tipos_diseno_grafico_precio" class="w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="border-radius:0.3rem; background:#F9FAFB;" placeholder="Precio" inputmode="decimal">
+                <button type="button" id="btn_tipos_diseno_grafico_guardar"
+                        class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem; background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+                    Guardar
+                </button>
+            </div>
+
+            <div class="overflow-x-auto border border-gray-200" style="border-radius:0.3rem;">
+                <table class="min-w-full text-sm">
+                    <thead class="bg-gray-50 text-gray-600">
+                        <tr>
+                            <th class="text-left px-4 py-3 font-semibold">TIPO</th>
+                            <th class="text-left px-4 py-3 font-semibold">PRECIO</th>
+                            <th class="text-center px-4 py-3 font-semibold">ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tb_tipos_diseno_grafico" class="divide-y divide-gray-200"></tbody>
+                </table>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <button type="button"
+                        class="w-full px-4 py-[0.45rem] border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem;"
+                        data-cat-x="tipos_diseno_grafico">
+                    Cancelar
+                </button>
+                <button type="button"
+                        class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem; background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);"
+                        onclick="Catalogs.reset('tipos_diseno_grafico')">
+                    Nuevo
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal: OTRO -->
+<div id="modalTiposOtro" class="fixed inset-0 hidden items-center justify-center p-4 z-[50]">
+    <div class="absolute inset-0 modal-backdrop"></div>
+    <div class="relative w-full max-w-3xl bg-white shadow-2xl overflow-hidden" style="border-radius:0.3rem; border:1px solid #1F54DE;">
+        <div class="px-5 py-[0.7rem] text-white flex items-start justify-between" style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+            <div class="text-base font-semibold">Otro</div>
+            <button type="button" class="p-2 hover:bg-white/10 transition" style="border-radius:0.3rem;" data-cat-x="tipos_otro" aria-label="Cerrar">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M18 6L6 18"></path><path d="M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="p-5 space-y-4">
+            <div id="alert_tipos_otro" class="hidden border p-3 text-sm" style="border-radius:0.3rem;"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <input id="in_tipos_otro_nombre" class="w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="border-radius:0.3rem; background:#F9FAFB;" placeholder="Tipo (PDF, Carátula...)">
+                <input id="in_tipos_otro_precio" class="w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="border-radius:0.3rem; background:#F9FAFB;" placeholder="Precio" inputmode="decimal">
+                <button type="button" id="btn_tipos_otro_guardar"
+                        class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem; background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+                    Guardar
+                </button>
+            </div>
+
+            <div class="overflow-x-auto border border-gray-200" style="border-radius:0.3rem;">
+                <table class="min-w-full text-sm">
+                    <thead class="bg-gray-50 text-gray-600">
+                        <tr>
+                            <th class="text-left px-4 py-3 font-semibold">TIPO</th>
+                            <th class="text-left px-4 py-3 font-semibold">PRECIO</th>
+                            <th class="text-center px-4 py-3 font-semibold">ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tb_tipos_otro" class="divide-y divide-gray-200"></tbody>
+                </table>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <button type="button"
+                        class="w-full px-4 py-[0.45rem] border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem;"
+                        data-cat-x="tipos_otro">
+                    Cancelar
+                </button>
+                <button type="button"
+                        class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
+                        style="border-radius:0.3rem; background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);"
+                        onclick="Catalogs.reset('tipos_otro')">
+                    Nuevo
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

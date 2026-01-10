@@ -91,53 +91,73 @@
 
             <div class="overflow-hidden max-h-0 transition-[max-height] duration-300 ease-in-out" data-accordion-panel="config">
                 <div class="mt-1 ml-6 space-y-1 border-l border-white/10 pl-4">
-                    <a href="#" class="flex items-center gap-2 px-2 py-[0.35rem] text-white/80 hover:text-white hover:bg-white/5 transition">
+
+                    <a href="#" data-open-catalog="planes_hosting"
+                       class="flex items-center gap-2 px-2 py-[0.35rem] text-white/80 hover:text-white hover:bg-white/5 transition">
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 1v22"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14"></path>
                         </svg>
                         Planes Hosting
                     </a>
-                    <a href="#" class="flex items-center gap-2 px-2 py-[0.35rem] text-white/80 hover:text-white hover:bg-white/5 transition">
+
+                    <a href="#" data-open-catalog="tld_dominios"
+                       class="flex items-center gap-2 px-2 py-[0.35rem] text-white/80 hover:text-white hover:bg-white/5 transition">
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path>
                         </svg>
                         Dominios TLD
                     </a>
-                    <a href="#" class="flex items-center gap-2 px-2 py-[0.35rem] text-white/80 hover:text-white hover:bg-white/5 transition">
+
+                    <a href="#" data-open-catalog="registrantes"
+                       class="flex items-center gap-2 px-2 py-[0.35rem] text-white/80 hover:text-white hover:bg-white/5 transition">
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle>
                         </svg>
                         Dominios Registrante
                     </a>
-                    <a href="#" class="flex items-center gap-2 px-2 py-[0.35rem] text-white/80 hover:text-white hover:bg-white/5 transition">
+
+                    <a href="#" data-open-catalog="tipos_correo"
+                       class="flex items-center gap-2 px-2 py-[0.35rem] text-white/80 hover:text-white hover:bg-white/5 transition">
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4 4h16v16H4z"></path><path d="M4 9h16"></path>
                         </svg>
                         Tipo de Correo
                     </a>
-                    <a href="#" class="flex items-center gap-2 px-2 py-[0.35rem] text-white/80 hover:text-white hover:bg-white/5 transition">
+
+                    <a href="#" data-open-catalog="tipos_diseno_web"
+                       class="flex items-center gap-2 px-2 py-[0.35rem] text-white/80 hover:text-white hover:bg-white/5 transition">
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 20h9"></path><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"></path>
                         </svg>
                         Diseño Web
                     </a>
-                    <a href="#" class="flex items-center gap-2 px-2 py-[0.35rem] text-white/80 hover:text-white hover:bg-white/5 transition">
+
+                    <a href="#" data-open-catalog="tipos_diseno_grafico"
+                       class="flex items-center gap-2 px-2 py-[0.35rem] text-white/80 hover:text-white hover:bg-white/5 transition">
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a7.97 7.97 0 0 0 .1-6"></path>
                         </svg>
                         Diseño Gráfico
                     </a>
+
+                    <a href="#" data-open-catalog="tipos_otro"
+                       class="flex items-center gap-2 px-2 py-[0.35rem] text-white/80 hover:text-white hover:bg-white/5 transition">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 5v14"></path>
+                            <path d="M5 12h14"></path>
+                        </svg>
+                        Otro
+                    </a>
+
                 </div>
             </div>
         </div>
     </nav>
 
     <div class="mt-auto border-t border-white/10" style="padding:0.5rem 1rem 0.5rem 1rem;">
-        <a
-            href="#"
-            class="flex items-center gap-3 px-3 py-[0.35rem] hover:bg-white/5 transition"
-            data-open-admin-modal
-        >
+        <a href="#"
+           class="flex items-center gap-3 px-3 py-[0.35rem] hover:bg-white/5 transition"
+           data-open-admin-modal>
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 20h9"></path>
                 <path d="M16.5 3.5a2.1 2 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"></path>
@@ -156,7 +176,7 @@
             const keepClientesOpen = keepOpenBtn && keepOpenBtn.getAttribute('aria-expanded') === 'true';
 
             function closePanel(key) {
-                if (keepClientesOpen && key === keepOpenKey) return; // ✅ no cerrar clientes si está activo por navegación
+                if (keepClientesOpen && key === keepOpenKey) return;
 
                 const panel = document.querySelector(`[data-accordion-panel="${key}"]`);
                 const chevron = document.querySelector(`[data-accordion-chevron="${key}"]`);
@@ -188,9 +208,7 @@
                 panel.style.maxHeight = '0px';
                 if (chevron) chevron.style.transform = 'rotate(0deg)';
 
-                if (btn.getAttribute('aria-expanded') === 'true') {
-                    openPanel(key);
-                }
+                if (btn.getAttribute('aria-expanded') === 'true') openPanel(key);
 
                 btn.addEventListener('click', () => {
                     const expanded = btn.getAttribute('aria-expanded') === 'true';
