@@ -79,6 +79,18 @@ $usuario_layout = $_SESSION['usuario'] ?? 'Administrador';
         .action-icon--green:hover{ background: rgba(34,197,94,0.12); color:#16a34a; }
         .action-icon--orange:hover{ background: rgba(249,115,22,0.12); color:#f97316; }
         .action-icon--red:hover{ background: rgba(239,68,68,0.10); color:#ef4444; }
+
+        /* SVG fixes: evita recorte y define clase icon-svg (no rompe diseño) */
+        svg { overflow: visible !important; }
+        .icon-svg {
+          width: 1.25rem;
+          height: 1.25rem;
+          display: inline-block;
+          flex: 0 0 auto;
+          vertical-align: middle;
+        }
+        /* evita que el stroke escale si alguna regla lo fuerza */
+        .icon-svg * { vector-effect: non-scaling-stroke; }
     </style>
 </head>
 <body class="min-h-screen app-bg">

@@ -1,5 +1,8 @@
+<!-- includes/modals.php (archivo completo) -->
+
 <!-- Modal: Crear Cliente -->
 <div id="clientModal" class="fixed inset-0 hidden items-center justify-center p-4 z-[50]">
+    <!-- overlay NO cierra al click -->
     <div class="absolute inset-0 modal-backdrop"></div>
 
     <div class="relative w-full max-w-2xl bg-white shadow-2xl overflow-hidden"
@@ -203,8 +206,6 @@
     }
 </style>
 
-<!-- Icono unificado del encabezado ACCIONES -->
-<!-- gear icon -->
 <!-- Modal: Planes Hosting -->
 <div id="modalPlanesHosting" class="fixed inset-0 hidden items-center justify-center p-4 z-[50]">
     <div class="absolute inset-0 modal-backdrop"></div>
@@ -327,7 +328,7 @@
 
                 <button type="button" id="btn_tld_dominios_guardar" class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
                         style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><path d="M17 21v-8H7v8"></path></svg>
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path></svg>
                     Guardar
                 </button>
             </div>
@@ -366,7 +367,7 @@
 
             <div class="flex items-center justify-end">
                 <button type="button" class="px-3 py-[0.45rem] border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition inline-flex items-center gap-2" data-cat-x="tld_dominios">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.8"><path d="M18 6L6 18"></path><path d="M6 6l12 12"></path></svg>
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.8"><path d="M18 6L6 18"></path></svg>
                     Cancelar
                 </button>
             </div>
@@ -384,7 +385,7 @@
                 <div class="text-base font-semibold">Dominios Registrante</div>
             </div>
             <button type="button" class="p-2 hover:bg-white/10 transition" data-cat-x="registrantes" aria-label="Cerrar">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M18 6L6 18"></path><path d="M6 6l12 12"></path></svg>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M18 6L6 18"></path></svg>
             </button>
         </div>
 
@@ -397,7 +398,6 @@
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.8">
                             <path d="M3 21h18"></path>
                             <path d="M7 21V7l5-3 5 3v14"></path>
-                            <path d="M10 10h.01"></path><path d="M14 10h.01"></path>
                         </svg>
                     </span>
                     <input id="in_registrantes_nombre" class="w-full pl-11 pr-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="background:#F9FAFB;" placeholder="Empresa registrante">
@@ -410,7 +410,7 @@
 
                 <button type="button" id="btn_registrantes_guardar" class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
                         style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><path d="M17 21v-8H7v8"></path></svg>
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path></svg>
                     Guardar
                 </button>
             </div>
@@ -430,10 +430,8 @@
                             <th class="text-left px-4 cat-th font-semibold"><div class="inline-flex items-center gap-2"><span class="font-extrabold text-gray-500">S/</span> PRECIO</div></th>
                             <th class="text-center px-4 cat-th font-semibold">
                                 <div class="inline-flex items-center gap-2 justify-center">
-                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8">
                                         <path d="M12 1v2"></path><path d="M12 21v2"></path>
-                                        <path d="M4.22 4.22l1.42 1.42"></path><path d="M18.36 18.36l1.42 1.42"></path>
-                                        <path d="M1 12h2"></path><path d="M21 12h2"></path>
                                         <circle cx="12" cy="12" r="4"></circle>
                                     </svg>
                                     ACCIONES
@@ -447,13 +445,14 @@
 
             <div class="flex items-center justify-end">
                 <button type="button" class="px-3 py-[0.45rem] border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition inline-flex items-center gap-2" data-cat-x="registrantes">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.8"><path d="M18 6L6 18"></path><path d="M6 6l12 12"></path></svg>
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.8"><path d="M18 6L6 18"></path></svg>
                     Cancelar
                 </button>
             </div>
         </div>
     </div>
 </div>
+
 <!-- Modal: Tipos Correo -->
 <div id="modalTiposCorreo" class="fixed inset-0 hidden items-center justify-center p-4 z-[50]">
     <div class="absolute inset-0 modal-backdrop"></div>
@@ -461,16 +460,14 @@
         <div class="px-5 py-[0.7rem] text-white flex items-center justify-between"
              style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
             <div class="flex items-center gap-2">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
                     <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
                     <path d="m22 6-10 7L2 6"></path>
                 </svg>
                 <div class="text-base font-semibold">Tipo de Correo</div>
             </div>
             <button type="button" class="p-2 hover:bg-white/10 transition" data-cat-x="tipos_correo" aria-label="Cerrar">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
-                    <path d="M18 6L6 18"></path><path d="M6 6l12 12"></path>
-                </svg>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M18 6L6 18"></path></svg>
             </button>
         </div>
 
@@ -480,33 +477,21 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <div class="relative">
                     <span class="field-ico">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.8">
                             <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
                             <path d="m22 6-10 7L2 6"></path>
                         </svg>
                     </span>
-                    <input id="in_tipos_correo_nombre"
-                           class="w-full pl-11 pr-3 py-[0.45rem] border border-gray-300 focus:outline-none"
-                           style="background:#F9FAFB;"
-                           placeholder="Tipo (Zoho, Gmail...)" />
+                    <input id="in_tipos_correo_nombre" class="w-full pl-11 pr-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="background:#F9FAFB;" placeholder="Tipo (Zoho, Gmail...)" />
                 </div>
 
                 <div class="money-wrap">
                     <span class="money-prefix">S/</span>
-                    <input id="in_tipos_correo_precio"
-                           class="money-input w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none"
-                           style="background:#F9FAFB;"
-                           placeholder="0.00"
-                           inputmode="decimal" />
+                    <input id="in_tipos_correo_precio" class="money-input w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="background:#F9FAFB;" placeholder="0.00" inputmode="decimal" />
                 </div>
 
-                <button type="button" id="btn_tipos_correo_guardar"
-                        class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
-                        style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
-                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-                        <path d="M17 21v-8H7v8"></path>
-                    </svg>
+                <button type="button" id="btn_tipos_correo_guardar" class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2" style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path></svg>
                     Guardar
                 </button>
             </div>
@@ -526,12 +511,7 @@
                             <th class="text-left px-4 cat-th font-semibold"><div class="inline-flex items-center gap-2"><span class="font-extrabold text-gray-500">S/</span> PRECIO</div></th>
                             <th class="text-center px-4 cat-th font-semibold">
                                 <div class="inline-flex items-center gap-2 justify-center">
-                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M12 1v2"></path><path d="M12 21v2"></path>
-                                        <path d="M4.22 4.22l1.42 1.42"></path><path d="M18.36 18.36l1.42 1.42"></path>
-                                        <path d="M1 12h2"></path><path d="M21 12h2"></path>
-                                        <circle cx="12" cy="12" r="4"></circle>
-                                    </svg>
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8"><circle cx="12" cy="12" r="4"></circle></svg>
                                     ACCIONES
                                 </div>
                             </th>
@@ -542,12 +522,8 @@
             </div>
 
             <div class="flex items-center justify-end">
-                <button type="button"
-                        class="px-3 py-[0.45rem] border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition inline-flex items-center gap-2"
-                        data-cat-x="tipos_correo">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.8">
-                        <path d="M18 6L6 18"></path><path d="M6 6l12 12"></path>
-                    </svg>
+                <button type="button" class="px-3 py-[0.45rem] border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition inline-flex items-center gap-2" data-cat-x="tipos_correo">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.8"><path d="M18 6L6 18"></path></svg>
                     Cancelar
                 </button>
             </div>
@@ -559,20 +535,13 @@
 <div id="modalTiposDisenoWeb" class="fixed inset-0 hidden items-center justify-center p-4 z-[50]">
     <div class="absolute inset-0 modal-backdrop"></div>
     <div class="relative w-full max-w-3xl bg-white shadow-2xl overflow-hidden" style="border:1px solid #1F54DE;">
-        <div class="px-5 py-[0.7rem] text-white flex items-center justify-between"
-             style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+        <div class="px-5 py-[0.7rem] text-white flex items-center justify-between" style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
             <div class="flex items-center gap-2">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="4" width="18" height="16" rx="2"></rect>
-                    <path d="M3 9h18"></path>
-                    <path d="M9 20V9"></path>
-                </svg>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"></rect></svg>
                 <div class="text-base font-semibold">Diseño Web</div>
             </div>
             <button type="button" class="p-2 hover:bg-white/10 transition" data-cat-x="tipos_diseno_web" aria-label="Cerrar">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
-                    <path d="M18 6L6 18"></path><path d="M6 6l12 12"></path>
-                </svg>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M18 6L6 18"></path></svg>
             </button>
         </div>
 
@@ -582,34 +551,18 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <div class="relative">
                     <span class="field-ico">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="4" width="18" height="16" rx="2"></rect>
-                            <path d="M3 9h18"></path>
-                            <path d="M9 20V9"></path>
-                        </svg>
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"></rect></svg>
                     </span>
-                    <input id="in_tipos_diseno_web_nombre"
-                           class="w-full pl-11 pr-3 py-[0.45rem] border border-gray-300 focus:outline-none"
-                           style="background:#F9FAFB;"
-                           placeholder="Tipo (Landing, Tienda...)" />
+                    <input id="in_tipos_diseno_web_nombre" class="w-full pl-11 pr-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="background:#F9FAFB;" placeholder="Tipo (Landing, Tienda...)" />
                 </div>
 
                 <div class="money-wrap">
                     <span class="money-prefix">S/</span>
-                    <input id="in_tipos_diseno_web_precio"
-                           class="money-input w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none"
-                           style="background:#F9FAFB;"
-                           placeholder="0.00"
-                           inputmode="decimal" />
+                    <input id="in_tipos_diseno_web_precio" class="money-input w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="background:#F9FAFB;" placeholder="0.00" inputmode="decimal" />
                 </div>
 
-                <button type="button" id="btn_tipos_diseno_web_guardar"
-                        class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
-                        style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
-                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-                        <path d="M17 21v-8H7v8"></path>
-                    </svg>
+                <button type="button" id="btn_tipos_diseno_web_guardar" class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2" style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
                     Guardar
                 </button>
             </div>
@@ -618,26 +571,9 @@
                 <table class="min-w-full">
                     <thead class="bg-gray-50 text-gray-600">
                         <tr>
-                            <th class="text-left px-4 cat-th font-semibold">
-                                <div class="inline-flex items-center gap-2">
-                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8">
-                                        <rect x="3" y="4" width="18" height="16" rx="2"></rect>
-                                    </svg>
-                                    NOMBRE
-                                </div>
-                            </th>
+                            <th class="text-left px-4 cat-th font-semibold"><div class="inline-flex items-center gap-2"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#6b7280"><rect x="3" y="4" width="18" height="16" rx="2"></rect></svg> NOMBRE</div></th>
                             <th class="text-left px-4 cat-th font-semibold"><div class="inline-flex items-center gap-2"><span class="font-extrabold text-gray-500">S/</span> PRECIO</div></th>
-                            <th class="text-center px-4 cat-th font-semibold">
-                                <div class="inline-flex items-center gap-2 justify-center">
-                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M12 1v2"></path><path d="M12 21v2"></path>
-                                        <path d="M4.22 4.22l1.42 1.42"></path><path d="M18.36 18.36l1.42 1.42"></path>
-                                        <path d="M1 12h2"></path><path d="M21 12h2"></path>
-                                        <circle cx="12" cy="12" r="4"></circle>
-                                    </svg>
-                                    ACCIONES
-                                </div>
-                            </th>
+                            <th class="text-center px-4 cat-th font-semibold"><div class="inline-flex items-center gap-2 justify-center"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#6b7280"><circle cx="12" cy="12" r="4"></circle></svg> ACCIONES</div></th>
                         </tr>
                     </thead>
                     <tbody id="tb_tipos_diseno_web" class="divide-y divide-gray-200"></tbody>
@@ -645,12 +581,8 @@
             </div>
 
             <div class="flex items-center justify-end">
-                <button type="button"
-                        class="px-3 py-[0.45rem] border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition inline-flex items-center gap-2"
-                        data-cat-x="tipos_diseno_web">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.8">
-                        <path d="M18 6L6 18"></path><path d="M6 6l12 12"></path>
-                    </svg>
+                <button type="button" class="px-3 py-[0.45rem] border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition inline-flex items-center gap-2" data-cat-x="tipos_diseno_web">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8"><path d="M18 6L6 18"></path></svg>
                     Cancelar
                 </button>
             </div>
@@ -662,19 +594,13 @@
 <div id="modalTiposDisenoGrafico" class="fixed inset-0 hidden items-center justify-center p-4 z-[50]">
     <div class="absolute inset-0 modal-backdrop"></div>
     <div class="relative w-full max-w-3xl bg-white shadow-2xl overflow-hidden" style="border:1px solid #1F54DE;">
-        <div class="px-5 py-[0.7rem] text-white flex items-center justify-between"
-             style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+        <div class="px-5 py-[0.7rem] text-white flex items-center justify-between" style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
             <div class="flex items-center gap-2">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 21a9 9 0 1 1 0-18c5 0 9 3.6 9 8 0 2-1.5 3-3 3h-2a2 2 0 0 0-2 2c0 2-1 5-2 5z"></path>
-                    <path d="M7.5 10h.01"></path>
-                </svg>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white"><path d="M12 21a9 9 0 1 1 0-18"></path></svg>
                 <div class="text-base font-semibold">Diseño Gráfico</div>
             </div>
             <button type="button" class="p-2 hover:bg-white/10 transition" data-cat-x="tipos_diseno_grafico" aria-label="Cerrar">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
-                    <path d="M18 6L6 18"></path><path d="M6 6l12 12"></path>
-                </svg>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white"><path d="M18 6L6 18"></path></svg>
             </button>
         </div>
 
@@ -684,33 +610,18 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <div class="relative">
                     <span class="field-ico">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 21a9 9 0 1 1 0-18c5 0 9 3.6 9 8 0 2-1.5 3-3 3h-2a2 2 0 0 0-2 2c0 2-1 5-2 5z"></path>
-                            <path d="M7.5 10h.01"></path>
-                        </svg>
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#9ca3af"><path d="M12 21a9 9 0 1 1 0-18"></path></svg>
                     </span>
-                    <input id="in_tipos_diseno_grafico_nombre"
-                           class="w-full pl-11 pr-3 py-[0.45rem] border border-gray-300 focus:outline-none"
-                           style="background:#F9FAFB;"
-                           placeholder="Tipo (Logo, Video...)" />
+                    <input id="in_tipos_diseno_grafico_nombre" class="w-full pl-11 pr-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="background:#F9FAFB;" placeholder="Tipo (Logo, Video...)" />
                 </div>
 
                 <div class="money-wrap">
                     <span class="money-prefix">S/</span>
-                    <input id="in_tipos_diseno_grafico_precio"
-                           class="money-input w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none"
-                           style="background:#F9FAFB;"
-                           placeholder="0.00"
-                           inputmode="decimal" />
+                    <input id="in_tipos_diseno_grafico_precio" class="money-input w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="background:#F9FAFB;" placeholder="0.00" inputmode="decimal" />
                 </div>
 
-                <button type="button" id="btn_tipos_diseno_grafico_guardar"
-                        class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
-                        style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
-                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-                        <path d="M17 21v-8H7v8"></path>
-                    </svg>
+                <button type="button" id="btn_tipos_diseno_grafico_guardar" class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2" style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
                     Guardar
                 </button>
             </div>
@@ -719,26 +630,9 @@
                 <table class="min-w-full">
                     <thead class="bg-gray-50 text-gray-600">
                         <tr>
-                            <th class="text-left px-4 cat-th font-semibold">
-                                <div class="inline-flex items-center gap-2">
-                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8">
-                                        <path d="M12 21a9 9 0 1 1 0-18"></path>
-                                    </svg>
-                                    NOMBRE
-                                </div>
-                            </th>
+                            <th class="text-left px-4 cat-th font-semibold"><div class="inline-flex items-center gap-2"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#6b7280"><path d="M12 21a9 9 0 1 1 0-18"></path></svg> NOMBRE</div></th>
                             <th class="text-left px-4 cat-th font-semibold"><div class="inline-flex items-center gap-2"><span class="font-extrabold text-gray-500">S/</span> PRECIO</div></th>
-                            <th class="text-center px-4 cat-th font-semibold">
-                                <div class="inline-flex items-center gap-2 justify-center">
-                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M12 1v2"></path><path d="M12 21v2"></path>
-                                        <path d="M4.22 4.22l1.42 1.42"></path><path d="M18.36 18.36l1.42 1.42"></path>
-                                        <path d="M1 12h2"></path><path d="M21 12h2"></path>
-                                        <circle cx="12" cy="12" r="4"></circle>
-                                    </svg>
-                                    ACCIONES
-                                </div>
-                            </th>
+                            <th class="text-center px-4 cat-th font-semibold"><div class="inline-flex items-center gap-2 justify-center"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#6b7280"><circle cx="12" cy="12" r="4"></circle></svg> ACCIONES</div></th>
                         </tr>
                     </thead>
                     <tbody id="tb_tipos_diseno_grafico" class="divide-y divide-gray-200"></tbody>
@@ -746,12 +640,8 @@
             </div>
 
             <div class="flex items-center justify-end">
-                <button type="button"
-                        class="px-3 py-[0.45rem] border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition inline-flex items-center gap-2"
-                        data-cat-x="tipos_diseno_grafico">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.8">
-                        <path d="M18 6L6 18"></path><path d="M6 6l12 12"></path>
-                    </svg>
+                <button type="button" class="px-3 py-[0.45rem] border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition inline-flex items-center gap-2" data-cat-x="tipos_diseno_grafico">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8"><path d="M18 6L6 18"></path></svg>
                     Cancelar
                 </button>
             </div>
@@ -763,19 +653,13 @@
 <div id="modalTiposOtro" class="fixed inset-0 hidden items-center justify-center p-4 z-[50]">
     <div class="absolute inset-0 modal-backdrop"></div>
     <div class="relative w-full max-w-3xl bg-white shadow-2xl overflow-hidden" style="border:1px solid #1F54DE;">
-        <div class="px-5 py-[0.7rem] text-white flex items-center justify-between"
-             style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+        <div class="px-5 py-[0.7rem] text-white flex items-center justify-between" style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
             <div class="flex items-center gap-2">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                    <path d="M12 22V12"></path>
-                </svg>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4"></path></svg>
                 <div class="text-base font-semibold">Otro</div>
             </div>
             <button type="button" class="p-2 hover:bg-white/10 transition" data-cat-x="tipos_otro" aria-label="Cerrar">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
-                    <path d="M18 6L6 18"></path><path d="M6 6l12 12"></path>
-                </svg>
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white"><path d="M18 6L6 18"></path></svg>
             </button>
         </div>
 
@@ -785,33 +669,18 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <div class="relative">
                     <span class="field-ico">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-                            <path d="M12 22V12"></path>
-                        </svg>
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="#9ca3af"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4"></path></svg>
                     </span>
-                    <input id="in_tipos_otro_nombre"
-                           class="w-full pl-11 pr-3 py-[0.45rem] border border-gray-300 focus:outline-none"
-                           style="background:#F9FAFB;"
-                           placeholder="Tipo (PDF, Carátula...)" />
+                    <input id="in_tipos_otro_nombre" class="w-full pl-11 pr-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="background:#F9FAFB;" placeholder="Tipo (PDF, Carátula...)" />
                 </div>
 
                 <div class="money-wrap">
                     <span class="money-prefix">S/</span>
-                    <input id="in_tipos_otro_precio"
-                           class="money-input w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none"
-                           style="background:#F9FAFB;"
-                           placeholder="0.00"
-                           inputmode="decimal" />
+                    <input id="in_tipos_otro_precio" class="money-input w-full px-3 py-[0.45rem] border border-gray-300 focus:outline-none" style="background:#F9FAFB;" placeholder="0.00" inputmode="decimal" />
                 </div>
 
-                <button type="button" id="btn_tipos_otro_guardar"
-                        class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2"
-                        style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8">
-                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-                        <path d="M17 21v-8H7v8"></path>
-                    </svg>
+                <button type="button" id="btn_tipos_otro_guardar" class="w-full px-4 py-[0.45rem] text-white font-semibold inline-flex items-center justify-center gap-2" style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
                     Guardar
                 </button>
             </div>
@@ -820,26 +689,9 @@
                 <table class="min-w-full">
                     <thead class="bg-gray-50 text-gray-600">
                         <tr>
-                            <th class="text-left px-4 cat-th font-semibold">
-                                <div class="inline-flex items-center gap-2">
-                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8">
-                                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4"></path>
-                                    </svg>
-                                    NOMBRE
-                                </div>
-                            </th>
+                            <th class="text-left px-4 cat-th font-semibold"><div class="inline-flex items-center gap-2"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#6b7280"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4"></path></svg> NOMBRE</div></th>
                             <th class="text-left px-4 cat-th font-semibold"><div class="inline-flex items-center gap-2"><span class="font-extrabold text-gray-500">S/</span> PRECIO</div></th>
-                            <th class="text-center px-4 cat-th font-semibold">
-                                <div class="inline-flex items-center gap-2 justify-center">
-                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M12 1v2"></path><path d="M12 21v2"></path>
-                                        <path d="M4.22 4.22l1.42 1.42"></path><path d="M18.36 18.36l1.42 1.42"></path>
-                                        <path d="M1 12h2"></path><path d="M21 12h2"></path>
-                                        <circle cx="12" cy="12" r="4"></circle>
-                                    </svg>
-                                    ACCIONES
-                                </div>
-                            </th>
+                            <th class="text-center px-4 cat-th font-semibold"><div class="inline-flex items-center gap-2 justify-center"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#6b7280"><circle cx="12" cy="12" r="4"></circle></svg> ACCIONES</div></th>
                         </tr>
                     </thead>
                     <tbody id="tb_tipos_otro" class="divide-y divide-gray-200"></tbody>
@@ -847,12 +699,8 @@
             </div>
 
             <div class="flex items-center justify-end">
-                <button type="button"
-                        class="px-3 py-[0.45rem] border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition inline-flex items-center gap-2"
-                        data-cat-x="tipos_otro">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.8">
-                        <path d="M18 6L6 18"></path><path d="M6 6l12 12"></path>
-                    </svg>
+                <button type="button" class="px-3 py-[0.45rem] border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition inline-flex items-center gap-2" data-cat-x="tipos_otro">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8"><path d="M18 6L6 18"></path></svg>
                     Cancelar
                 </button>
             </div>
