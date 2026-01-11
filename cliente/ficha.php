@@ -57,6 +57,12 @@ $dominioLink = $dominio !== '' ? ('https://' . $dominio) : '#';
 $estado = (string)($cliente['estado'] ?? 'Activo');
 
 $fecha_creacion_value = !empty($cliente['fecha_creacion']) ? (string)$cliente['fecha_creacion'] : '';
+$fecha_creacion_dt_local = '';
+if ($fecha_creacion_value !== '') {
+    // MySQL: "YYYY-MM-DD HH:MM:SS" -> HTML: "YYYY-MM-DDTHH:MM"
+    $fecha_creacion_dt_local = str_replace(' ', 'T', substr($fecha_creacion_value, 0, 16));
+}
+
 $notas_value = (string)($cliente['notas_adicionales'] ?? '');
 $readonly = !$edit;
 
@@ -92,7 +98,6 @@ $ec = estado_color($estado);
                 </div>
             </div>
 
-            <!-- ✅ botones más discretos (mismos colores) -->
             <div class="flex items-center gap-2">
                 <a href="<?php echo htmlspecialchars($waLink); ?>"
                    target="<?php echo $telDigits !== '' ? '_blank' : '_self'; ?>"
@@ -136,16 +141,16 @@ $ec = estado_color($estado);
         </div>
 
         <style>
-            /* estilos locales (paneles/inputs) */
+            /* estilos locales (paneles/inputs) -> más compacto sin cambiar estructura */
             .panel-head{
                 border-bottom: 1px solid rgba(229,231,235,1);
-                padding: 0.6rem 1rem; /* ✅ pedido */
+                padding: 0.5rem 1rem;   /* ✅ compacto */
                 display:flex;
                 align-items:center;
                 gap:0.6rem;
                 font-weight:700;
             }
-            .panel-body{ padding: 0.85rem 1rem; } /* ✅ más compacto */
+            .panel-body{ padding: 0.75rem 1rem; } /* ✅ compacto */
 
             .panel-blue{ border-top: 3px solid #2563eb; }
             .panel-blue .panel-head{ background: rgba(37,99,235,0.08); color:#1d4ed8; }
@@ -167,15 +172,15 @@ $ec = estado_color($estado);
 
             .field-label{
                 display:block;
-                font-size: 0.9rem;
+                font-size: 0.88rem; /* ✅ compacto */
                 color:#374151;
                 font-weight: 600;
-                margin-bottom: 0.1rem; /* ✅ pedido */
+                margin-bottom: 0.05rem;
             }
 
             .input-field{
                 width:100%;
-                padding: 0.45rem 0.75rem !important; /* ✅ pedido */
+                padding: 0.42rem 0.75rem !important; /* ✅ compacto */
                 padding-left: 2.5rem !important;
                 border: 1px solid #d1d5db;
                 background: #f9fafb;
@@ -183,26 +188,26 @@ $ec = estado_color($estado);
 
             .textarea-field{
                 width:100%;
-                padding: 0.55rem 0.75rem;
+                padding: 0.5rem 0.75rem; /* ✅ compacto */
                 border: 1px solid #d1d5db;
                 background: #f9fafb;
-                min-height: 5.5rem; /* ✅ más compacto */
+                min-height: 5rem; /* ✅ compacto */
                 resize: vertical;
             }
 
             .readonly{ opacity:0.85; }
 
-            /* Estado General (solo vista): barra de color como imagen */
+            /* ✅ Estado General (solo vista): padding pedido */
             .estado-pill{
                 width:100%;
-                padding: 0.55rem 0.75rem;
+                padding: 0.25rem 0.75rem; /* ✅ pedido */
                 border: 1px solid #d1d5db;
                 border-radius: 0.3rem;
                 text-align:center;
                 font-weight:700;
             }
 
-            /* Panel final acciones (botones más pequeños) */
+            /* Panel final acciones */
             .actions-row{
                 display:flex;
                 justify-content:flex-end;
@@ -221,10 +226,10 @@ $ec = estado_color($estado);
             }
         </style>
 
-        <form id="clienteFichaForm" class="space-y-5" onsubmit="return false;">
+        <form id="clienteFichaForm" class="space-y-4" onsubmit="return false;">
             <input type="hidden" id="fichaId" value="<?php echo (int)$cliente['id']; ?>" />
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
                 <div class="soft-card overflow-hidden panel-blue lg:col-span-2">
                     <div class="panel-head">
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -235,7 +240,7 @@ $ec = estado_color($estado);
                     </div>
 
                     <div class="panel-body">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
                             <div>
                                 <label class="field-label">Cliente / Empresa</label>
                                 <div class="input-wrap readonly">
@@ -316,15 +321,13 @@ $ec = estado_color($estado);
                         Estado y Metadata
                     </div>
 
-                    <div class="panel-body space-y-4">
+                    <div class="panel-body space-y-3">
                         <div>
                             <label class="field-label">Estado General</label>
 
                             <?php if ($edit): ?>
                                 <div class="input-wrap <?php echo $readonly ? 'readonly' : ''; ?>">
-                                    <!-- icono de estado dinámico -->
-                                    <span class="input-ico" id="estadoIcon"
-                                          style="color: <?php echo htmlspecialchars($ec['fg']); ?>;">
+                                    <span class="input-ico" id="estadoIcon" style="color: <?php echo htmlspecialchars($ec['fg']); ?>;">
                                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                             <circle cx="12" cy="12" r="10"></circle>
                                             <path d="M12 8h.01"></path>
@@ -341,8 +344,7 @@ $ec = estado_color($estado);
                                     </select>
                                 </div>
                             <?php else: ?>
-                                <!-- ✅ solo estado general con color (como imagen) -->
-                                <div class="estado-pill" style="background: <?php echo htmlspecialchars($ec['bg']); ?>; color: <?php echo htmlspecialchars($ec['fg']); ?>; border-color: <?php echo htmlspecialchars($ec['bg']); ?>;">
+                                <div class="estado-pill" style="background: <?php echo htmlspecialchars($ec['bg']); ?>; color: <?php echo htmlspecialchars($ec['fg']); ?>; border-color: <?php echo htmlspecialchars($ec['fg']); ?>33;">
                                     <?php echo htmlspecialchars($estado); ?>
                                 </div>
                             <?php endif; ?>
@@ -359,7 +361,16 @@ $ec = estado_color($estado);
                                         <path d="M3 10h18"></path>
                                     </svg>
                                 </span>
-                                <input id="fecha_creacion" class="input-field" value="<?php echo htmlspecialchars($fecha_creacion_value); ?>" <?php echo $readonly ? 'disabled' : ''; ?> />
+
+                                <?php if ($edit): ?>
+                                    <input id="fecha_creacion"
+                                           type="datetime-local"
+                                           class="input-field"
+                                           value="<?php echo htmlspecialchars($fecha_creacion_dt_local); ?>"
+                                           <?php echo $readonly ? 'disabled' : ''; ?> />
+                                <?php else: ?>
+                                    <input id="fecha_creacion" class="input-field" value="<?php echo htmlspecialchars($fecha_creacion_value); ?>" disabled />
+                                <?php endif; ?>
                             </div>
                         </div>
 
@@ -382,7 +393,7 @@ $ec = estado_color($estado);
                 </div>
 
                 <div class="panel-body">
-                    <div class="text-sm text-gray-600 text-center py-8">
+                    <div class="text-sm text-gray-600 text-center py-6">
                         Esta sección se implementará próximamente
                     </div>
                 </div>

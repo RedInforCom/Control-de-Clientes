@@ -56,7 +56,18 @@ try {
         $nombre = trim((string)($_POST['nombre'] ?? ''));
         $precio = (string)($_POST['precio'] ?? '0');
 
-        if ($nombre === '') json_fail('Nombre requerido.');
+        if ($nombre === '') {
+            $msgs = [
+                'planes_hosting' => 'Nombre del plan requerido.',
+                'tld_dominios' => 'Dominio/TLD requerido.',
+                'registrantes' => 'Registrante requerido.',
+                'tipos_correo' => 'Tipo de correo requerido.',
+                'tipos_diseno_web' => 'Tipo de diseño web requerido.',
+                'tipos_diseno_grafico' => 'Tipo de diseño gráfico requerido.',
+                'tipos_otro' => 'Tipo requerido.',
+            ];
+            json_fail($msgs[$lista] ?? 'Campo requerido.');
+        }
         $precioF = (float)$precio;
         if ($precioF < 0) json_fail('Precio inválido.');
 
@@ -71,7 +82,18 @@ try {
         $precio = (string)($_POST['precio'] ?? '0');
 
         if ($id <= 0) json_fail('ID inválido.');
-        if ($nombre === '') json_fail('Nombre requerido.');
+        if ($nombre === '') {
+            $msgs = [
+                'planes_hosting' => 'Nombre del plan requerido.',
+                'tld_dominios' => 'Dominio/TLD requerido.',
+                'registrantes' => 'Registrante requerido.',
+                'tipos_correo' => 'Tipo de correo requerido.',
+                'tipos_diseno_web' => 'Tipo de diseño web requerido.',
+                'tipos_diseno_grafico' => 'Tipo de diseño gráfico requerido.',
+                'tipos_otro' => 'Tipo requerido.',
+            ];
+            json_fail($msgs[$lista] ?? 'Campo requerido.');
+        }
 
         $precioF = (float)$precio;
         if ($precioF < 0) json_fail('Precio inválido.');

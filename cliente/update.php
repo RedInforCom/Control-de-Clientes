@@ -86,6 +86,16 @@ if (!in_array($estado, $allowedEstados, true)) {
     exit;
 }
 
+/* ✅ FIX: aceptar datetime-local y convertir a MySQL */
+if ($fecha_creacion !== '') {
+    if (strpos($fecha_creacion, 'T') !== false) {
+        $fecha_creacion = str_replace('T', ' ', $fecha_creacion);
+        if (strlen($fecha_creacion) === 16) {
+            $fecha_creacion .= ':00';
+        }
+    }
+}
+
 try {
     $stmt = $pdo->prepare("UPDATE clientes
                            SET contacto = :contacto,
@@ -120,7 +130,7 @@ try {
                 'id' => $id,
             ]);
         } catch (Throwable $e2) {
-            // Si falla por formato fecha, lo ignoramos aquí (lo controlaremos en UI/validación luego)
+            // Si falla por formato fecha/columna, lo ignoramos
         }
     }
 
