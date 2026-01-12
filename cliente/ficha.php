@@ -87,7 +87,7 @@ $ec = estado_color($estado);
         <div class="flex items-start justify-between gap-4 mb-5">
             <div class="flex items-start gap-3">
                 <a href="/clientes.php" class="mt-1 text-gray-500 hover:text-gray-800 transition" title="Volver">
-                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M15 18l-6-6 6-6"></path>
                     </svg>
                 </a>
@@ -105,8 +105,9 @@ $ec = estado_color($estado);
                    class="inline-flex items-center gap-2 px-2 py-[0.25rem] text-white font-semibold shadow-sm text-sm"
                    style="background:#16a34a;"
                    title="WhatsApp">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.6L3 21l1.9-5.5A8.5 8.5 0 1 1 21 11.5z"></path>
+                        <path d="M12.5 7.5v5l3 1.5"></path>
                     </svg>
                     WhatsApp
                 </a>
@@ -117,10 +118,10 @@ $ec = estado_color($estado);
                    class="inline-flex items-center gap-2 px-2 py-[0.25rem] text-white font-semibold shadow-sm text-sm"
                    style="background:#2563eb;"
                    title="Web">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <circle cx="12" cy="12" r="10"></circle>
                         <path d="M2 12h20"></path>
-                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        <path d="M12 2c3.3 0 6 3.5 6 10s-2.7 10-6 10S6 17.5 6 10 8.7 2 12 2z"></path>
                     </svg>
                     Web
                 </a>
@@ -130,7 +131,7 @@ $ec = estado_color($estado);
                        class="inline-flex items-center gap-2 px-2 py-[0.25rem] text-white font-semibold shadow-sm text-sm"
                        style="background:#f97316;"
                        title="Editar">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M12 20h9"></path>
                             <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"></path>
                         </svg>
@@ -232,7 +233,7 @@ $ec = estado_color($estado);
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
                 <div class="soft-card overflow-hidden panel-blue lg:col-span-2">
                     <div class="panel-head">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M20 21v-1a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v1"></path>
                             <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
                         </svg>
@@ -245,7 +246,7 @@ $ec = estado_color($estado);
                                 <label class="field-label">Cliente / Empresa</label>
                                 <div class="input-wrap readonly">
                                     <span class="input-ico">
-                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                             <path d="M3 21h18"></path>
                                             <path d="M5 21V7l8-4 6 4v14"></path>
                                             <path d="M9 9h1"></path><path d="M9 13h1"></path><path d="M9 17h1"></path>
@@ -260,7 +261,7 @@ $ec = estado_color($estado);
                                 <label class="field-label">Contacto</label>
                                 <div class="input-wrap <?php echo $readonly ? 'readonly' : ''; ?>">
                                     <span class="input-ico">
-                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                             <path d="M20 21v-1a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v1"></path>
                                             <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"></path>
                                         </svg>
@@ -273,11 +274,11 @@ $ec = estado_color($estado);
                                 <label class="field-label">Teléfono</label>
                                 <div class="input-wrap <?php echo $readonly ? 'readonly' : ''; ?>">
                                     <span class="input-ico">
-                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.86.31 1.7.57 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.09a2 2 0 0 1 2.11-.45c.8.26 1.64.45 2.5.57A2 2 0 0 1 22 16.92z"></path>
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.12.8.31 1.7.57 2.5a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.58-1.09a2 2 0 0 1 2.11-.45c.8.26 1.64.45 2.5.57A2 2 0 0 1 22 16.92z"></path>
                                         </svg>
                                     </span>
-                                    <input id="telefono" class="input-field" value="<?php echo htmlspecialchars((string)$cliente['telefono']); ?>" <?php echo $readonly ? 'disabled' : 'inputmode="numeric"'; ?> />
+                                    <input id="telefono" class="input-field" value="<?php echo htmlspecialchars((string)$cliente['telefono']); ?>" <?php echo $readonly ? 'disabled' : ''; ?> />
                                 </div>
                             </div>
 
@@ -285,7 +286,7 @@ $ec = estado_color($estado);
                                 <label class="field-label">Dominio</label>
                                 <div class="input-wrap <?php echo $readonly ? 'readonly' : ''; ?>">
                                     <span class="input-ico">
-                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                             <circle cx="12" cy="12" r="10"></circle>
                                             <path d="M2 12h20"></path>
                                             <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
@@ -299,8 +300,8 @@ $ec = estado_color($estado);
                                 <label class="field-label">Correo</label>
                                 <div class="input-wrap <?php echo $readonly ? 'readonly' : ''; ?>">
                                     <span class="input-ico">
-                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
                                             <path d="m22 6-10 7L2 6"></path>
                                         </svg>
                                     </span>
@@ -313,7 +314,7 @@ $ec = estado_color($estado);
 
                 <div class="soft-card overflow-hidden panel-purple">
                     <div class="panel-head">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <circle cx="12" cy="12" r="10"></circle>
                             <path d="M12 8h.01"></path>
                             <path d="M11 12h1v4h1"></path>
@@ -328,7 +329,7 @@ $ec = estado_color($estado);
                             <?php if ($edit): ?>
                                 <div class="input-wrap <?php echo $readonly ? 'readonly' : ''; ?>">
                                     <span class="input-ico" id="estadoIcon" style="color: <?php echo htmlspecialchars($ec['fg']); ?>;">
-                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                             <circle cx="12" cy="12" r="10"></circle>
                                             <path d="M12 8h.01"></path>
                                             <path d="M11 12h1v4h1"></path>
@@ -344,7 +345,7 @@ $ec = estado_color($estado);
                                     </select>
                                 </div>
                             <?php else: ?>
-                                <div class="estado-pill" style="background: <?php echo htmlspecialchars($ec['bg']); ?>; color: <?php echo htmlspecialchars($ec['fg']); ?>; border-color: <?php echo htmlspecialchars($ec['fg']); ?>33;">
+                                <div class="estado-pill" style="background: <?php echo htmlspecialchars($ec['bg']); ?>; color: <?php echo htmlspecialchars($ec['fg']); ?>; border-color: <?php echo htmlspecialchars($ec['bg']); ?>;">
                                     <?php echo htmlspecialchars($estado); ?>
                                 </div>
                             <?php endif; ?>
@@ -354,7 +355,7 @@ $ec = estado_color($estado);
                             <label class="field-label">Fecha de Creación</label>
                             <div class="input-wrap <?php echo $readonly ? 'readonly' : ''; ?>">
                                 <span class="input-ico">
-                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                         <rect x="3" y="4" width="18" height="18" rx="2"></rect>
                                         <path d="M16 2v4"></path>
                                         <path d="M8 2v4"></path>
@@ -384,7 +385,7 @@ $ec = estado_color($estado);
 
             <div class="soft-card overflow-hidden panel-green">
                 <div class="panel-head">
-                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
                         <path d="M12 22V12"></path>
                         <path d="m3.3 7 8.7 5 8.7-5"></path>
@@ -405,7 +406,7 @@ $ec = estado_color($estado);
                         <div class="actions-row">
                             <a href="/cliente/ficha.php?id=<?php echo (int)$cliente['id']; ?>"
                                class="btn-small border border-blue-200 bg-blue-50 text-blue-700 hover:bg-blue-100 transition">
-                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <path d="M18 6L6 18"></path>
                                     <path d="M6 6l12 12"></path>
                                 </svg>
@@ -416,7 +417,7 @@ $ec = estado_color($estado);
                                     class="btn-small text-white font-semibold inline-flex items-center justify-center gap-2"
                                     style="background: linear-gradient(to right, #2563eb 0%, #1d4ed8 100%);"
                                     onclick="FichaCliente.save()">
-                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <svg class="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
                                     <path d="M17 21v-8H7v8"></path>
                                     <path d="M7 3v5h8"></path>

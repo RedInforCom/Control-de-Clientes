@@ -53,7 +53,7 @@ try {
                 type="button"
                 onclick="event.preventDefault(); window.ClientModal?.open?.();"
             >
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                     <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
                     <circle cx="9" cy="7" r="4"></circle>
                     <path d="M20 8v6"></path>
@@ -98,7 +98,7 @@ try {
                 <div class="flex flex-col md:flex-row md:items-center gap-3">
                     <div class="flex-1 relative">
                         <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <circle cx="11" cy="11" r="8"></circle>
                                 <path d="m21 21-4.3-4.3"></path>
                             </svg>
@@ -187,7 +187,7 @@ try {
                                            href="https://<?php echo htmlspecialchars($dominio); ?>"
                                            target="_blank" rel="noopener">
                                             <?php echo htmlspecialchars($dominio); ?>
-                                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                            <svg class="w-4 h-4 text-current" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                                                 <path d="M15 3h6v6"></path>
                                                 <path d="M10 14 21 3"></path>
@@ -211,7 +211,7 @@ try {
                                            target="<?php echo $wa_link ? '_blank' : '_self'; ?>"
                                            onclick="<?php echo $wa_link ? '' : "alert('No hay teléfono'); return false;"; ?>"
                                            title="WhatsApp">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                                 <path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.6L3 21l1.9-5.5A8.5 8.5 0 1 1 21 11.5z"></path>
                                             </svg>
                                         </a>
@@ -219,7 +219,7 @@ try {
                                         <a class="action-icon action-icon--blue"
                                            href="/cliente/ficha.php?id=<?php echo $id; ?>"
                                            title="Ver ficha">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                                 <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path>
                                                 <circle cx="12" cy="12" r="3"></circle>
                                             </svg>
@@ -228,7 +228,7 @@ try {
                                         <a class="action-icon action-icon--orange"
                                            href="/cliente/ficha.php?id=<?php echo $id; ?>&edit=1"
                                            title="Editar ficha">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                                 <path d="M12 20h9"></path>
                                                 <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"></path>
                                             </svg>
@@ -238,7 +238,7 @@ try {
                                                 class="action-icon action-icon--red"
                                                 title="Eliminar"
                                                 onclick="ClientsUI.deleteClient(<?php echo (int)$id; ?>, '<?php echo htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8'); ?>', this)">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                                 <path d="M3 6h18"></path>
                                                 <path d="M8 6V4h8v2"></path>
                                                 <path d="M19 6l-1 14H6L5 6"></path>

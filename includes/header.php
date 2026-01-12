@@ -1,6 +1,8 @@
 <?php
 $has_renewal_alerts = $has_renewal_alerts ?? false;
 ?>
+<script src="/assets/js/iconify-icon.min.js" defer></script>
+
 <header class="bg-white border-b border-gray-200">
     <div class="px-6 py-[0.3rem] flex items-center justify-between">
         <div>

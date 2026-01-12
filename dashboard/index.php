@@ -55,11 +55,11 @@ try {
                 type="button"
                 onclick="event.preventDefault(); window.ClientModal?.open?.();"
             >
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <path d="M20 8v6"></path>
-                    <path d="M23 11h-6"></path>
+                <!-- Heroicon: user-plus (outline) -->
+                <svg data-heroicon="user-plus" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.5V18a2.25 2.25 0 00-2.25-2.25h-7.5A2.25 2.25 0 003 18v1.5" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 6.75a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M22.5 12.75h-3m1.5-1.5v3" />
                 </svg>
                 Crear Cliente
             </button>
@@ -73,11 +73,12 @@ try {
                     <div class="text-3xl font-semibold text-gray-900"><?php echo (int)$total_clientes; ?></div>
                 </div>
                 <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: rgba(37,99,235,0.12);">
-                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="9" cy="7" r="4"></circle>
-                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    <!-- Heroicon: user-group (outline) -->
+                    <svg data-heroicon="user-group" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[#2563eb]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a4 4 0 00-4-4h-1" />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M7 20H2v-2a4 4 0 014-4h1" />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M7 8a4 4 0 100-8 4 4 0 000 8z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M17 8a4 4 0 100-8 4 4 0 000 8z" />
                     </svg>
                 </div>
             </div>
@@ -88,8 +89,9 @@ try {
                     <div class="text-3xl font-semibold text-gray-900"><?php echo (int)$clientes_activos; ?></div>
                 </div>
                 <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: rgba(34,197,94,0.14);">
-                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 6 9 17l-5-5"></path>
+                    <!-- Heroicon: check (outline) -->
+                    <svg data-heroicon="check" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[#16a34a]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>
                 </div>
             </div>
@@ -100,9 +102,11 @@ try {
                     <div class="text-3xl font-semibold text-gray-900"><?php echo (int)$renovaciones; ?></div>
                 </div>
                 <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: rgba(249,115,22,0.14);">
-                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 12a9 9 0 1 1-3-6.7"></path>
-                        <path d="M21 3v7h-7"></path>
+                    <!-- Heroicon: arrow-path (outline) -->
+                    <svg data-heroicon="arrow-path" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[#f97316]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M17.834 6.166A7.501 7.501 0 006.166 17.834" />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M17.834 6.166h-3.684m3.684 0V9.85" />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M6.166 17.834h3.684m-3.684 0v-3.684" />
                     </svg>
                 </div>
             </div>
@@ -113,9 +117,10 @@ try {
                     <div class="text-3xl font-semibold text-gray-900">S/ <?php echo number_format((float)$ingresos_mes, 2); ?></div>
                 </div>
                 <div class="w-12 h-12 rounded-xl flex items-center justify-center" style="background: rgba(168,85,247,0.14);">
-                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 1v22"></path>
-                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"></path>
+                    <!-- Heroicon: currency-dollar (outline) -->
+                    <svg data-heroicon="currency-dollar" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[#a855f7]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 2v20" />
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 7.5a3 3 0 013-3c1.657 0 3 1.343 3 3s-1.343 3-3 3-3 1.343-3 3 1.343 3 3 3c1.657 0 3 1.343 3 3" />
                     </svg>
                 </div>
             </div>
@@ -157,9 +162,9 @@ try {
                 <div class="flex flex-col md:flex-row md:items-center gap-3">
                     <div class="flex-1 relative">
                         <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <path d="m21 21-4.3-4.3"></path>
+                            <!-- Heroicon: magnifying-glass (outline) -->
+                            <svg data-heroicon="magnifying-glass" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M6.75 11.25a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0z" />
                             </svg>
                         </span>
                         <input
@@ -246,10 +251,10 @@ try {
                                            href="https://<?php echo htmlspecialchars($dominio); ?>"
                                            target="_blank" rel="noopener">
                                             <?php echo htmlspecialchars($dominio); ?>
-                                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                                                <path d="M15 3h6v6"></path>
-                                                <path d="M10 14 21 3"></path>
+                                            <!-- Heroicon: arrow-top-right-on-square (outline) -->
+                                            <svg data-heroicon="arrow-top-right-on-square" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-current" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                              <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 6.75H6.75A2.25 2.25 0 004.5 9v8.25A2.25 2.25 0 006.75 19.5h8.25a2.25 2.25 0 002.25-2.25V9.75" />
+                                              <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 3h4.5v4.5M21 3l-9 9" />
                                             </svg>
                                         </a>
                                     <?php else: ?>
@@ -270,26 +275,29 @@ try {
                                            target="<?php echo $wa_link ? '_blank' : '_self'; ?>"
                                            onclick="<?php echo $wa_link ? '' : "alert('No hay teléfono'); return false;"; ?>"
                                            title="WhatsApp">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M21 11.5a8.5 8.5 0 0 1-12.5 7.6L3 21l1.9-5.5A8.5 8.5 0 1 1 21 11.5z"></path>
+                                            <!-- Heroicon: phone (outline) used as WhatsApp substitute -->
+                                            <svg data-heroicon="phone" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75A2.25 2.25 0 014.5 4.5h2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-.2.52l-1.2 1.2a11.25 11.25 0 005.3 5.3l1.2-1.2a.75.75 0 01.52-.2H19.5a.75.75 0 01.75.75V19.5A2.25 2.25 0 0118 21.75H6.75A2.25 2.25 0 014.5 19.5V6.75z" />
                                             </svg>
                                         </a>
 
                                         <a class="action-icon action-icon--blue"
                                            href="/cliente/ficha.php?id=<?php echo $id; ?>"
                                            title="Ver ficha">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"></path>
-                                                <circle cx="12" cy="12" r="3"></circle>
+                                            <!-- Heroicon: eye (outline) -->
+                                            <svg data-heroicon="eye" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12c0 2.47 3.76 7.5 9.75 7.5s9.75-5.03 9.75-7.5S17.74 4.5 12 4.5 2.25 9.53 2.25 12z" />
+                                              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                             </svg>
                                         </a>
 
                                         <a class="action-icon action-icon--orange"
                                            href="/cliente/ficha.php?id=<?php echo $id; ?>&edit=1"
                                            title="Editar ficha">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M12 20h9"></path>
-                                                <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"></path>
+                                            <!-- Heroicon: pencil (outline) -->
+                                            <svg data-heroicon="pencil" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                              <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 3.487a2.25 2.25 0 013.182 3.182l-9.014 9.014a4.5 4.5 0 01-1.897 1.13l-3.379 1.013 1.014-3.38a4.5 4.5 0 011.13-1.897l9.014-9.014z" />
+                                              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 19.5H6.75A2.25 2.25 0 014.5 17.25V6.75A2.25 2.25 0 016.75 4.5h5.379" />
                                             </svg>
                                         </a>
 
@@ -297,12 +305,9 @@ try {
                                                 class="action-icon action-icon--red"
                                                 title="Eliminar"
                                                 onclick="ClientsUI.deleteClient(<?php echo (int)$id; ?>, '<?php echo htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8'); ?>', this)">
-                                            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="M3 6h18"></path>
-                                                <path d="M8 6V4h8v2"></path>
-                                                <path d="M19 6l-1 14H6L5 6"></path>
-                                                <path d="M10 11v6"></path>
-                                                <path d="M14 11v6"></path>
+                                            <!-- Heroicon: trash (outline) -->
+                                            <svg data-heroicon="trash" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                              <path stroke-linecap="round" stroke-linejoin="round" d="M6 7.5h12M8.25 7.5V6a2.25 2.25 0 012.25-2.25h3.0A2.25 2.25 0 0116.5 6v1.5M8.25 7.5v12A2.25 2.25 0 0010.5 21.75h3.0A2.25 2.25 0 0015.75 19.5v-12" />
                                             </svg>
                                         </button>
                                     </div>
